@@ -15,25 +15,6 @@ if (!isset($_SESSION["usuario"])) {
     $name = $_SESSION["usuario"];
 }
 
-//si no se ha presionado el boton submit llamado buscar, entonces esta vacio y entra al if
-if (empty($_GET["buscar"])) {
-
-
-    //llamamos al archivo donde se efectua la conexion a la BD
-    include("../conectBD/Conexion.php");
-    //hacemos una consulta a la tabla de cursos para mostrar todos los cursos
-    $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fetchAll(PDO::FETCH_OBJ);
-} else {
-    //obtiene lo que se ha escrito el input text de busqueda y lo guarda en $busqueda
-    $busqueda = $_GET["elementoBuscar"];
-
-    //llamamos al archivo donde se efectua la conexion a la BD
-    include("../conectBD/Conexion.php");
-    //hacemos una consulta a la tabla de cursos con el criterio de busqueda
-
-    $registros = $bds->query("SELECT * FROM curso WHERE estatusCurso= 'activo' AND nombre_curso LIKE '%$busqueda%' ")->fetchAll(PDO::FETCH_OBJ);
-}
-
 
 ?>
 
@@ -78,11 +59,7 @@ if (empty($_GET["buscar"])) {
                         </a>
                     </li>
 
-
-
                     <li class="elemenu"><a href="../SessionClose.php"><img src="../img/imgsysgerde/cerrarSesion.png" alt="Cerrar Sesion" class="imgCcerrarSes"></a></li>
-
-
 
 
                 </ul>
@@ -149,9 +126,6 @@ if (empty($_GET["buscar"])) {
 
             </table>
         </div>
-
-
-
 
         <div class="patas">
             <!-- Estructura del pie de pagina-->
