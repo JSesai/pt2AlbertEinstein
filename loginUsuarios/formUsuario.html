@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/Logo_CAE.png" type="image/x-icon">
+    <title>login</title>
+    <link rel="stylesheet" href="../CSS/styleforms.css">
+</head>
+<body style=" background: rgb(176,223,226);
+    background: linear-gradient(0deg, rgba(176,223,226,1) 0%, rgba(182,191,223,1) 48%);" >
+    
+    <section>
+    <div class="contenedorFormReg">
+            <form action="registraUsr.php" method="POST" class="formReg" >
+                <h2 class="form_titleReg">Ingresa tus datos </h2>
+                
+                
+                <div class="form_containerReg">
+                    <div class="form_groupReg">
+                        <input type="text" id="name" class="form_inputReg" placeholder=" " name="nombreUsr">
+                        <label for="name" class="form_labelReg" >Nombre:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_groupReg">
+                        <input type="text" id="apepat" class="form_inputReg" placeholder="  " name="apePatUsr">
+                        <label for="apepat" class="form_labelReg" >Apellido Paterno:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_groupReg">
+                        <input type="text" id="apemat" class="form_inputReg" placeholder=" " name="apematUser">
+                        <label for="apemat" class="form_labelReg" >Apellido Materno:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_groupReg">
+                        <input type="text" id="correo" class="form_inputReg" placeholder=" " name="mailUser">
+                        <label for="correo" class="form_labelReg" >Correo Electronico:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_groupReg">
+                        <input type="password" id="pass" class="form_inputReg" placeholder=" " name="passUser">
+                        <label for="pass" class="form_labelReg" >Contraseña:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_groupReg">
+                        <input type="password" id="passConf" class="form_inputReg" placeholder=" " name="confPassUser">
+                        <label for="passConf" class="form_labelReg" >Confirma contraseña:</label>
+                        <span class="form_lineReg"></span>
+                    </div>
+
+                    <div class="form_group">
+                            <label for="opcion" class="form_label">Soy:</label>
+                            <select name="tab" class="form_opcion" id="opcion">
+                                <option >Administrador</option>
+                                <option >Docente</option>
+                                <option >Control escolar</option>
+                                <option >Directivo</option>
+
+                            </select>
+                        </div>
+
+                    <div class="btnFormUsr">
+                    <input type="submit" class="form_submiRegUsr" value="Registrarme" name="registraUsuario">
+                    <input type="button" onclick="location.href='../index.php';" value="Cancelar" class="form_cancelRegUsr">
+
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>
+  
+</body>
+</html>
+
+

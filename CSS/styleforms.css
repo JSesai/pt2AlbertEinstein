@@ -1,0 +1,389 @@
+body{
+    width: auto;
+    height: auto;
+}
+
+
+.contenedorForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  
+
+}
+
+.logoform{
+    margin-top: -50px;
+}
+
+.logoform img {
+    margin-top: 0;
+    width: 150px;
+}
+
+.form{
+    border: solid rgb(196, 196, 250) 2px;
+    background-color: #fff;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    height: 470px;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    /* box-shadow: 0 5px 10 px -5px rgb(0 0 0 /30%); */
+    text-align: center;
+    box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+
+}
+
+.form_title{
+    font-size: 2rem;
+    margin-bottom: .2em;
+}
+
+.form_paragraph{
+    font-weight: 300;
+}
+
+.form_link{
+    font-weight: 400;
+    color: #000;
+}
+
+.form_container{
+    margin-top: 2.5em;
+    display: grid;
+    gap:2.2em;
+
+}
+
+.form_group{
+    position: relative;
+    --color:#5757577e;
+    margin-bottom: -30px;
+
+}
+
+.form_input{
+    width: 100%;
+    background: none;
+    color: #706c6c;
+    font-size: 1rem;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+    font-family:'Roboto', sans-serif;
+}
+
+.form_input:focus + .form_label,
+    .form_input:not(:placeholder-shown)+ .form_label{
+
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #3866f2;  
+}
+.form_label{
+    color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+    font-size: 1.5rem;
+}
+
+.form_submit{
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.form_submit2{
+    margin-top: 100px;
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.form_cancel2{
+
+    margin-top: -30px;
+    background: #ed3131;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+
+.form_cancel{
+    margin-top: -30px;
+    background: #ed3131;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.form_opcion{
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(75, 106, 199, 0.742);
+    width: 150px;
+    height: 30px;
+}
+
+/* FORMULARIO DE REGISTRO */
+
+
+.contenedorFormReg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    
+  
+   
+
+}
+
+
+.formReg{
+    border: solid rgb(196, 196, 250) 2px;
+    background-color: #fff;
+    margin: 0px 10px;
+    width: 90%;
+    max-width: 450px;
+    height: 500px;
+    padding: 4em 2em;
+    border-radius: 10px;
+    /* box-shadow: 0 5px 10 px -5px rgb(0 0 0 /30%); */
+    text-align: center;
+    box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+
+}
+
+.form_titleReg{
+    font-size: 2.5rem;
+    padding-top: -90px;
+    margin-top: -60px;
+    margin-bottom: -50px;
+
+}
+
+.form_paragraphReg{
+    font-weight: 300;
+}
+
+.form_linkReg{
+    font-weight: 400;
+    color: #000;
+}
+
+.form_containerReg{
+    margin-top: 3em;
+    display: grid;
+    gap:2.5em;
+
+}
+
+.form_groupReg{
+    position: relative;
+    --color:#5757577e;
+
+}
+
+.form_inputReg{
+    width: 100%;
+    background: none;
+    color: #706c6c;
+    font-size: 1rem;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+    font-family:'Roboto', sans-serif;
+}
+
+.form_inputReg:focus + .form_labelReg,
+    .form_inputReg:not(:placeholder-shown)+ .form_labelReg{
+
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #3866f2;  
+}
+.form_labelReg{
+    color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+    font-size: 1.3rem;
+}
+
+.form_submitReg{
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+   
+}
+
+
+.form_cancelReg{
+    margin-top: -30px;
+    background: #ed3131;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+/* estilo a formulario de registro de usuarios */
+
+.btnFormUsr{
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-around;
+   
+
+}
+.form_submiRegUsr{
+    width: 40%;
+background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+}
+
+.form_cancelRegUsr{
+    width: 40%;
+    background: #ed3131;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    
+    border: none;
+    border-radius: .5em;
+}
+
+.mensajeError{
+    color: green;
+    position: fixed;
+    visibility: hidden; 
+    
+    
+    
+
+}
+/* div que contiene a los parrafos con las validaciones */
+.validarPas{
+    position: fixed;
+    width: 200px;
+    background: #fff;
+    border: solid black 1px;
+     margin-left: -220px;
+    margin-top: -100px; 
+   
+ 
+    display: none;
+
+}
+/* parrafo con las validaciones */
+.mensajeValidacion{
+    color: red;
+    position: relative;
+    /* visibility: hidden; */
+   
+}
+.mensajeValidacionLog{
+    color: red;
+    position: relative;
+    visibility: hidden;
+    
+}
+.mensajeValidacionLog2{
+    color: red;
+    position: relative;
+    visibility: hidden;
+}
+
+.mensajeValidacion img{
+    width: 15px;
+}
+
+.mensajeValidaciones{
+    color: rebeccapurple;
+}
+
+.mensajeErrorPasTamanio{
+    color: #000;
+    position: relative;
+    /* visibility: hidden;  */
+
+}
+.FormatcorrectoPas{
+position: fixed;
+margin-top: -22px;
+margin-left: 200px;
+
+}
+.FormatcorrectoPas img{
+width: 15px;
+visibility: hidden;
+
+}
+
+.mensajeErrorPas{
+    margin-top: -20px;
+    margin-left: 220px;
+    color: red;
+    position: fixed;
+    visibility: hidden;
+}
+
+.mensajeErrorPas img{
+    width: 15px;
+}

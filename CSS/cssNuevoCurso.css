@@ -1,0 +1,947 @@
+/* ESTA HOJA DE ESTILOS ES UNICAMENTE PARA LA INTERFAZ DE NUEVO CURSO */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto:wght@300;400;700&display=swap');
+
+/*Definimos los colores y las guardamos en variables para acceder a ellas desde el codigo*/
+:root{
+    --color-menu: #125B50;
+    --color-menu-hover: #1d201e;
+    --color-menu-hamburguesa:black; 
+    --color-background: #FCF8E8;  
+    --color-fondo:#417D7A; 
+    --color-letra1:#000000;
+    --color-letraBlanco:#fbfbfb;
+    --color-form:#E2D784; 
+    /* --color-tabla:rgba(119, 131, 224, 0.785); */
+    --color-tabla: #EDE6DB;
+    --color-cabecera:#1C6758;
+}
+
+
+body{
+    
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+
+    box-sizing: border-box;
+    
+
+}
+
+
+h1{
+        
+    text-align: center;
+}
+
+a{
+text-decoration: none;
+color: black;
+font-size: 20px;
+}
+
+
+
+
+
+    .cabecera {grid-area: menu;}
+    .formRegCur{grid-area: formulario;}
+    .tablaCursos {grid-area: tabla;}
+    
+    .ContenedorNuevoCurso {
+    
+        overflow: hidden;
+            /*le indicamos que abarque todo el largo de la ventana*/
+                
+        background-color:var(--color-fondo); 
+        /*hacemos uso de grid con display:grid*/
+        display: grid;
+        /*definimos las areas que tendra el layout*/
+        grid-template-areas:
+        
+        'menu menu menu menu'
+        'formulario tabla tabla tabla'
+        'formulario tabla tabla tabla'
+        
+        ;
+        
+        /*Indicamos la separacion entre cada columna*/
+        
+        gap: 10px;
+             
+        }
+    
+    /* contenedor de la barra de navegacion-- tablet--*/
+       
+    .contenedorMenuNuevoCurso{
+          
+        display: flex;
+        justify-content: space-between; 
+        max-width: 100%;
+        min-width: auto;
+        
+        background-color: var(--color-cabecera);
+       
+        border: rgb(126, 219, 154); 
+        border-bottom: solid var(--color-letra1) 2px;
+        overflow: hidden;
+    
+       
+    }
+    
+    /* menu  de lista, ajustamos tamaño de fuente -- tableta*/
+    .Menu {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 100%;
+        /* border: solid fuchsia 2px;  */
+      
+           
+    }
+    
+    
+    /* Elementos del menu  */
+    .elemenu{
+        padding: 7px;
+        cursor: pointer;
+        
+    }
+    /* cuando el puntero se encuentre sobre los elementos del menu */
+    .elemenu:hover{
+        border-bottom:solid var(--color-letra1) 2px; 
+    
+    }
+    
+    
+    /* contenedor de catalogo y cerrar sesion. */
+    .Menu2{
+        list-style: none;
+        margin-top: 0;
+        /* border: solid yellow 2px; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+    
+    }
+    
+    
+    
+    /* imagen del menu2 de la barra de navegacion -- tablet-- */
+    .imgMenu{
+        width: 50px;
+    }  
+    
+    
+    /* contenedor del logo --tablet-- */
+    .logoEducae{
+        width: 120px;
+       
+    }
+    /* Logo de la barra de navegacion, ocultamos y reducimos tamaño */
+    .logo_navFN{
+        visibility: visible;
+        width: 120px;
+        
+    }
+    
+    
+     /* ajustamos el tamaño del icono del menu hamburguesa --tablet-- */
+     .btnMenu img{
+       
+       display: none;
+        margin: 10px;
+        width: 30px;
+        cursor: pointer;
+        /* border: solid red 2px;  */
+        
+    }
+       /* ocultamos el cuadro del check */
+    #btnMenu {
+            display: none; 
+            
+      
+    }
+     /* imagen del perfil del admin */
+    .imgPerfilAdm {
+            
+    
+    
+        visibility: visible;
+        width:40px;
+        border-radius:30px;
+    }
+    
+    /* ocultamos el nombre del usuario que aprece con la imagen de perfil */
+    .nombreUsr{
+        visibility: visible;
+        font-size: 17px;
+    }
+    
+    /* Imagen Cerrar sesion */
+    .imgCcerrarSes{
+        visibility: visible;
+        width: 40px;
+        margin: 5px;
+    
+    }
+    
+        /* FORMARTO A FORMULARIO ---mobil--*** */
+    
+    /* contenedor del formulario */
+    .formRegCur{
+    width: auto;
+    max-width: 100%;
+    min-width: 100px;
+    height: auto;
+    max-height: max-content;
+    
+    margin: 2px;
+    
+    }
+    
+    /* tag form  */
+    .formRegCurso{
+    /* border: solid red 2px; */
+    margin: 0;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    height: 450px;
+    background-color: var(--color-form);
+    border:solid  black 2px;
+    overflow: hidden;
+    border-radius: 10px;
+    }
+    
+    /* titulo del formulario  */
+    .titulo_fomulario{
+        
+        font-size: 1.2rem;
+        margin-bottom: .2em;
+        text-align: center;
+        
+    }
+    
+    .form_etiqueta{
+        
+        color: var(--color-menu-hover);
+         
+        font-size: 13px;
+        cursor: pointer;
+        
+       
+    }
+    
+    .input_formulario{
+        width: 90%;
+        background: none;
+        color: #706c6c;
+        font-size: .7rem;
+        padding: .2em .3em;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid var(--color-menu-hover);
+        
+    }
+    
+    .input_txtArea{
+        width: 90%;
+        max-width: 100%;
+        border-radius: 10px;
+        font-size: .7rem;
+    }
+    
+    .form-control{
+        font-size: .7rem;
+    }
+    
+        /* contenedor de botones del formulario -- mobil-- */
+    .botons{
+        visibility: visible;
+        width: auto;
+        height: 200px;
+        margin: 50px 20px;
+        /* border: solid red 2px; */
+        
+    }
+    .btn_submit{
+        width: 120px;
+        
+        background: #3866f2;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: .7rem;
+        padding: .8em 0;
+        border-radius: .5em; 
+        
+    }
+    
+    .btn_cancel{
+        width: 120px;
+        background: #98281a;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: .7rem;
+        padding: .8em 0;
+        border-radius: .5em;
+    }
+    
+    .formulario_bloque{
+         margin-bottom: 1em; 
+         
+    
+    }
+    
+    /* Contenedor que tiene a y tabla ---- mobil ---*/
+    .tablaCursos{
+        width: 99%;
+        border: solid black 2px;
+        overflow: hidden;
+        font-size: 18px;
+        background-color: var(--color-tabla);
+        display: flex;
+        justify-content: center;
+        
+        background-color: var(--color-tabla);
+        opacity: 1; 
+        color: var(--color-letra1);
+        
+        border-radius: 10px; 
+    
+    }
+    
+    
+
+
+@media (max-width:1328px) {
+
+.cabecera {grid-area: menu;}
+.formRegCur{grid-area: formulario;}
+.tablaCursos {grid-area: tabla;}
+
+.ContenedorNuevoCurso {
+
+    overflow: hidden;
+        /*le indicamos que abarque todo el largo de la ventana*/
+            
+    background-color:var(--color-fondo); 
+    /*hacemos uso de grid con display:grid*/
+    display: grid;
+    /*definimos las areas que tendra el layout*/
+    grid-template-areas:
+    
+    'menu menu menu'
+    'formulario tabla tabla '
+    'formulario tabla tabla  '
+    
+    ;
+    
+    /*Indicamos la separacion entre cada columna*/
+    
+    gap: 10px;
+         
+    }
+
+/* contenedor de la barra de navegacion-- tablet--*/
+   
+.contenedorMenuNuevoCurso{
+      
+    display: flex;
+    justify-content: space-between; 
+    max-width: 100%;
+    min-width: auto;
+    
+    background-color: var(--color-cabecera);
+   
+    border: rgb(126, 219, 154); 
+    border-bottom: solid var(--color-letra1) 2px;
+    overflow: hidden;
+
+   
+}
+
+/* menu  de lista, ajustamos tamaño de fuente -- tableta*/
+.Menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+    /* border: solid fuchsia 2px;  */
+  
+       
+}
+
+
+/* Elementos del menu  */
+.elemenu{
+    padding: 7px;
+    cursor: pointer;
+    
+}
+/* cuando el puntero se encuentre sobre los elementos del menu */
+.elemenu:hover{
+    border-bottom:solid var(--color-letra1) 2px; 
+
+}
+
+
+/* contenedor de catalogo y cerrar sesion. */
+.Menu2{
+    list-style: none;
+    margin-top: 0;
+    /* border: solid yellow 2px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+
+}
+
+
+
+/* imagen del menu2 de la barra de navegacion -- tablet-- */
+.imgMenu{
+    width: 50px;
+}  
+
+
+/* contenedor del logo --tablet-- */
+.logoEducae{
+    width: 120px;
+   
+}
+/* Logo de la barra de navegacion, ocultamos y reducimos tamaño */
+.logo_navFN{
+    visibility: visible;
+    width: 120px;
+    
+}
+
+
+ /* ajustamos el tamaño del icono del menu hamburguesa --tablet-- */
+ .btnMenu img{
+   
+   display: none;
+    margin: 10px;
+    width: 30px;
+    cursor: pointer;
+    /* border: solid red 2px;  */
+    
+}
+   /* ocultamos el cuadro del check */
+#btnMenu {
+        display: none; 
+        
+  
+}
+ /* imagen del perfil del admin */
+.imgPerfilAdm {
+        
+
+
+    visibility: visible;
+    width:40px;
+    border-radius:30px;
+}
+
+/* ocultamos el nombre del usuario que aprece con la imagen de perfil */
+.nombreUsr{
+    visibility: visible;
+    font-size: 17px;
+}
+
+/* Imagen Cerrar sesion */
+.imgCcerrarSes{
+    visibility: visible;
+    width: 40px;
+    margin: 5px;
+
+}
+
+    /* FORMARTO A FORMULARIO ---mobil--*** */
+
+/* contenedor del formulario */
+.formRegCur{
+width: auto;
+max-width: 100%;
+min-width: 100px;
+height: auto;
+max-height: max-content;
+
+margin: 2px;
+
+}
+
+/* tag form  */
+.formRegCurso{
+/* border: solid red 2px; */
+margin: 0;
+padding: 20px;
+font-family: 'Roboto', sans-serif;
+height: 450px;
+background-color: var(--color-form);
+border:solid  black 2px;
+overflow: hidden;
+border-radius: 10px;
+}
+
+/* titulo del formulario  */
+.titulo_fomulario{
+    
+    font-size: 1.2rem;
+    margin-bottom: .2em;
+    text-align: center;
+    
+}
+
+.form_etiqueta{
+    
+    color: var(--color-menu-hover);
+     
+    font-size: 13px;
+    cursor: pointer;
+    
+   
+}
+
+.input_formulario{
+    width: 90%;
+    background: none;
+    color: #706c6c;
+    font-size: .7rem;
+    padding: .2em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-menu-hover);
+    
+}
+
+.input_txtArea{
+    width: 90%;
+    max-width: 100%;
+    border-radius: 10px;
+    font-size: .7rem;
+}
+
+.form-control{
+    font-size: .7rem;
+}
+
+    /* contenedor de botones del formulario -- mobil-- */
+.botons{
+    visibility: visible;
+    width: auto;
+    height: 200px;
+    margin: 50px 20px;
+    /* border: solid red 2px; */
+    
+}
+.btn_submit{
+    width: 120px;
+    
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: .7rem;
+    padding: .8em 0;
+    border-radius: .5em; 
+    
+}
+
+.btn_cancel{
+    width: 120px;
+    background: #98281a;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: .7rem;
+    padding: .8em 0;
+    border-radius: .5em;
+}
+
+.formulario_bloque{
+     margin-bottom: 1em; 
+     
+
+}
+
+/* Contenedor que tiene a y tabla ---- mobil ---*/
+.tablaCursos{
+    width: 99%;
+    border: solid black 2px;
+    overflow: hidden;
+    font-size: 18px;
+    background-color: var(--color-tabla);
+    display: flex;
+    justify-content: center;
+    
+    background-color: var(--color-tabla);
+    opacity: 1; 
+    color: var(--color-letra1);
+    
+    border-radius: 10px; 
+
+}
+
+
+}
+
+
+
+    
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Colocamos las media queris esta primera es para dispositivos moviles 
+que van de 0 a 480 */
+@media (max-width:790px){
+    
+   
+    /*declaramos las propiedades para areas*/
+    
+    .cabecera {grid-area: menu;}
+    .formRegCur{grid-area: formulario;}
+    .tablaCursos {grid-area: tablaCursos;}
+    
+    
+    .ContenedorNuevoCurso {
+
+
+        overflow: hidden;
+        /*le indicamos que abarque todo el largo de la ventana*/
+        
+        
+        
+        background-color:var(--color-background); 
+        /*hacemos uso de grid con display:grid*/
+        display: grid;
+        /*definimos las areas que tendra el layout*/
+        grid-template-areas:
+        
+        'menu '
+        'formulario'
+        'tablaCursos'
+        
+        ;
+      
+        /*Indicamos la separacion entre cada columna*/
+        
+        gap: 0;
+         
+    }
+    
+    .ContenedorNuevoCurso>*{
+         /* width: 100%;  */
+        /* width: 100vw;
+        height: 100vh;
+
+                */
+        
+    }
+
+    
+    
+/* contenedor de la barra de nacegacion-- movil--*/
+   
+.contenedorMenuNuevoCurso{
+   
+/* border: solid red 4px;  */
+display: flex;
+align-items: center;
+
+max-width: 100%;
+min-width: auto;
+min-height: 53px;
+background-color: var(--color-cabecera);
+
+border: rgb(126, 219, 154); 
+border-bottom: solid var(--color-letra1) 2px;
+overflow: hidden;
+
+   
+}
+
+
+
+
+/* menu responivo el estilo de lista a los elementos de la lista y ajustamos tamaño de fuente -- mobil*/
+.Menu {
+list-style: none;
+margin-top: 0;
+flex-direction: column;
+/* border: solid purple 2px; */
+
+   
+}
+
+/* elementos del menu responsivo --mobil- */
+.elemenu{
+display: none;
+background-color: var(--color-fondo);
+width: 400px;
+
+
+
+}
+.elemenu:hover{
+background-color: var(--color-cabecera);
+cursor: pointer;
+border-bottom:none;
+}
+
+/* contenedor de catalogo y cerrar sesion. */
+.Menu2{
+display: flex;
+justify-content: flex-start;
+align-items: center;
+list-style: none;
+/* border: solid yellow 2px;  */
+width: 200px;
+max-width: 95%;
+
+
+
+}
+.elemenu2{
+   
+
+}
+    
+    /* tamaño de fuente del menu */
+.elemenu a{
+        font-size:  15px;
+        font-family: 'Roboto', sans-serif;
+        text-align: left;
+}
+.elemenu a:hover{
+    border-bottom: solid black 1px;
+}
+    
+    
+   
+/* contenedor del logo --tablet-- */
+.logoEducae{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    /* border: solid brown 2px; */
+   
+}
+/* Logo de la barra de navegacion, ocultamos y reducimos tamaño */
+.logo_navFN{
+    display: block;
+    width: 80px;
+    
+}
+
+
+    
+    
+    /* ajustamos el tamaño del icono del menu --mobil-- */
+    .btnMenu img{
+        visibility: visible;
+        display: block;
+        margin: 10px;
+        width: 30px;
+        
+    }
+
+    /* imagen del menu2 de la barra de navegacion -- movil-- */
+    .imgMenu{
+    display: block;
+    width: 40px;
+     
+    }    
+    
+/* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
+input:checked  ~ .elemenu{
+display:block; 
+                        
+}
+
+
+    
+    /* ocultamos el cuadro del check */
+ #btnMenu {
+        display: none; 
+        
+  
+}
+    
+       
+/* imagen del perfil del admin */
+.imgPerfilAdm {
+
+visibility: visible;
+
+width:30px;
+border-radius:20px;
+
+}
+
+/* ocultamos el nombre del usuario que aprece con la imagen de perfil */
+.nombreUsr{
+    visibility: visible;
+    font-size: 15px;
+}
+
+/* Imagen Cerrar sesion */
+.imgCcerrarSes{
+    visibility: visible;
+    width: 40px;
+    margin: 5px;
+
+}
+    /* FORMARTO A FORMULARIO ---mobil--*** */
+
+    /* contenedor del formulario */
+.formRegCur{
+width: auto;
+max-width: 100%;
+min-width: 100px;
+height: auto;
+max-height: max-content;
+
+margin: 2px;
+
+}
+
+/* tag form  */
+.formRegCurso{
+    /* border: solid red 2px; */
+    margin: 0;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    height: 450px;
+    background-color: var(--color-form);
+}
+
+/* titulo del formulario  */
+.titulo_fomulario{
+    
+    font-size: 1.2rem;
+    margin-bottom: .2em;
+    text-align: center;
+    
+}
+
+.form_etiqueta{
+    
+    color: var(--color-menu-hover);
+     
+    font-size: 13px;
+    cursor: pointer;
+    
+   
+}
+
+.input_formulario{
+    width: 90%;
+    background: none;
+    color: #706c6c;
+    font-size: .7rem;
+    padding: .2em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-menu-hover);
+    
+}
+
+.input_txtArea{
+    width: 90%;
+    max-width: 100%;
+    border-radius: 10px;
+    font-size: .7rem;
+}
+
+.form-control{
+    font-size: .7rem;
+}
+
+    /* contenedor de botones del formulario -- mobil-- */
+.botons{
+    visibility: visible;
+    width: auto;
+    height: 200px;
+    margin: 50px 20px;
+    /* border: solid red 2px; */
+    
+}
+.btn_submit{
+    width: 120px;
+    
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: .7rem;
+    padding: .8em 0;
+    border-radius: .5em; 
+    
+}
+
+.btn_cancel{
+    width: 120px;
+    background: #98281a;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: .7rem;
+    padding: .8em 0;
+    border-radius: .5em;
+}
+
+.formulario_bloque{
+     margin-bottom: 1em; 
+     
+
+}
+
+/* Contenedor que tiene a y tabla ---- mobil ---*/
+.tablaCursos{
+    width: 99%;
+    border: solid black 1px;
+    overflow: hidden;
+    font-size: 14px;
+    /* display: flex;
+    justify-content: center;
+    width: 90%;
+    background-color: var(--color-tabla);
+    opacity: 1; 
+    color: var(--color-letra1);
+    
+    border-radius: 10px; */
+
+}
+
+.patas{
+    background-color: var(--color-backgroundUpyDown);
+}
+
+.patas1{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+}
+.patas2{
+    color: var(--color-letra2);
+    text-align: center;
+}
+
+.itemfoot a img {
+    width: 35px;
+}
+
+}
+

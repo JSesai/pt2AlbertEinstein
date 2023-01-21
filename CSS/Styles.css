@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto:wght@300;400;700&display=swap');
+
+/*Definimos los colores y las guardamos en variables para acceder a ellas desde el codigo*/
+:root{
+    --color-menu: #125B50;
+    --color-menu-hover: #1d201e;
+    --color-menu-hamburguesa:black; 
+    --color-background: #FCF8E8;  
+    --color-fondo:#417D7A; 
+    --color-letra1:#000000;
+    --color-letraBlanco:#fbfbfb;
+    --color-form:#E2D784; 
+    /* --color-tabla:rgba(119, 131, 224, 0.785); */
+    --color-tabla: #EDE6DB;
+    --color-cabecera:#1C6758;
+}
+
+
+body{
+    
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5f7;
+
+    box-sizing: border-box;
+    
+
+}
+
+/*declaramos las propiedades para areas*/
+.cabecera {grid-area: cabecera;}
+.formulario {grid-area: formulario;}
+.tablaCursos {grid-area: tablaCursos;}
+.foot {grid-area: foot;}
+
+
+
+.Container {
+    /*le indicamos que abarque todo el largo de la ventana*/
+    
+    /* min-height: 100vh;  */
+   
+    background-color:var(--color-background);
+    /*hacemos uso de grid con display:grid*/
+    display: grid;
+    /*definimos las areas que tendra el layout*/
+    grid-template-areas:
+    
+    'cabecera cabecera cabecera '
+    'formulario tablaCursos tablaCursos '
+    'foot foot foot '
+    ;
+  
+    /*Indicamos la separacion entre cada columna*/
+    gap: 20px;
+    background-color: var(--color-fondo);
+    border: solid red 4px;
+}
+
+.Container>*{
+    /*     
+        background-color: var(--color-background); */
+        /* display: flex; */
+        
+    }
+
+
+/* GRID DE CABECERA CONTIEN Menu de navegacion */
+.cabecera{
+    width: 100%;
+    height: 80px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    background-color: var(--color-cabecera);
+    border-bottom: solid black 2px;
+    /* background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,92,1) 74%, rgba(0,212,255,1) 100%); */
+}
+
+.barraNavegar{
+    width: auto;
+    height: 90px;
+    
+}
+
+.Menu{
+
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 50px;
+    margin-top: 0;
+    padding-top: 20px;
+    background-color: var(--color-cabecera);
+    list-style: none;
+    border: rgb(126, 219, 154);
+   
+    
+    
+}
+
+.contenedorBarra{
+   
+    display: inline;
+    width: 100%;
+}
+
+.catalogo{
+    margin-top: 10px;
+}
+
+.logo_nav{
+    width: 100px;
+    margin-top: -20px;
+    margin-right: 500px;
+
+    
+    
+}
+.elemenu{
+   
+   padding-right: 0px;
+   text-align: center;
+   
+}
+
+
+.elemenu:hover{
+    
+    border-bottom: solid black 1px;
+    
+    
+}
+.imgMenu{
+    width: 40px;
+    padding-top: -150px;
+    padding-right: 20px;
+}
+
+.imgPerfil {
+    width:40px;
+    
+    border-radius:20px;
+}
+
+
+
+
+h1{
+        
+        text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+/*ESTILOS PARA FORMULARIO */
+
+
+
+
+/* Contenedor que tiene a y tabla */
+.tablaCursos{
+    
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    background-color: var(--color-tabla);
+    opacity: 1; 
+    color: var(--color-letra1);
+    border: solid black 2px;
+    border-radius: 10px;
+
+}
+
+/* Formato a tabla */
+.tabla{
+    
+    font-family: 'Roboto', sans-serif;
+    border:var(--color-cabecera);
+    border-collapse: collapse;
+    border-spacing: 5px;
+    margin: 0;
+    font-size: 1em;
+    max-width: 90%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+
+}
+
+
+
+th, td {
+    width: 25%;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    padding: 0.3em;
+ }
+  .rowTabCursos{
+   width: 90%;
+   position: static;
+ } 
+
+ .rowTabCursos:hover{
+   background-color: var(--color-form);
+   color: #000;
+   /* font-weight: bold; */
+ }
+ .cabeceraCursos{
+    background-color: var(--color-fondo);
+    color: var(--color-letraBlanco);
+    text-align: middle;
+
+ }
+
+ .info{
+    text-align: center;
+    margin-bottom: 30px;
+ }
+
+.form{
+
+    background-color: #fff;
+    margin: auto;
+    width: 100%;
+    height: 700px;
+    /* max-width: 350px; */
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10 px -5px rgb(0 0 0 /30%);
+    text-align: center;
+
+}
+/* FORMARTO A FORMULARIO */
+/* div que contiene al formulario */
+.formRegCur{
+    width: 90%;
+    padding-left: 20px;
+    margin-left: 20px;
+    border: solid black 2px;
+    height: 600px;
+    border-radius: 10px;
+
+    background-color: var(--color-form);
+}
+/* contenedor form */
+.form_container{
+    width: 200px;
+    margin-top: 1em;
+    margin-left: 2em;;
+}
+/* titulo del formulario */
+.titulo_fomulario{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: .2em;
+    margin-left: 1em;;
+}
+
+
+
+.formulario_bloque{
+    margin-bottom: 1.5em;
+     
+
+}
+
+.input_formulario{
+    width: 90%;
+    background: none;
+    color: #706c6c;
+    font-size: 1rem;
+    padding: .4em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-menu-hover);
+    font-family:'Roboto', sans-serif;
+}
+
+
+
+.form_etiqueta{
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-menu-hover);
+    cursor: pointer;
+    
+    top: 0;
+    left: 5px;
+   
+}
+
+.input_txtArea{
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* #form_file{
+    visibility: hidden;
+    width: 0;
+    position: relative;
+} */
+#form_file{
+    content:'Imagen curso';
+    width: 13rem;
+    height: 2rem;
+    padding-left: 1.8rem;
+    padding-top: .3rem;
+    border: none;
+    outline: none;
+    visibility: visible;
+    position: absolute;
+    display: inline-block;
+    cursor: pointer; 
+
+}
+
+.botons{
+padding-top: 3em;
+margin-top: -30px;
+
+display: block;
+justify-content: flex-start;
+}
+
+.btn_submit{
+    width: 200px;
+    margin-top: 10px;
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+}
+
+.btn_cancel{
+    width: 200px;
+    background: #98281a;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em; 
+}
+
+/* formato a nombre usuario */
+.nombreUsr{
+    margin-top: 0px;
+}
+
+/*meidida de 960 a 1328 para ordenadores si queremos podemos incluir otra medida
+para ordenadores mas pequeños que va de  960 a 1024 */
+@media (max-width:1328px){
+    
+    .Container {
+   
+    width: 100%;
+               
+    
+    /*hacemos uso de grid con display:grid*/
+    display: grid; 
+    /*definimos las areas que tendra el layout*/
+     grid-template-areas:
+    
+     'cabecera cabecera  cabecera'
+     'formulario  tablaCursos tablaCursos'
+     'foot foot foot '
+    
+    ;
+
+    }
+    
+    
+}
+
+
+@media (max-width:960px) {
+
+    .Container {
+       width: auto;
+        /*hacemos uso de grid con display:grid*/
+         display: grid;  
+        /*definimos las areas que tendra el layout*/
+         grid-template-areas:
+        
+            'cabecera  '
+            'formulario '
+            'tablaCursos '
+            'foot '
+        
+        ;
+        gap: 10px;
+        /* width: auto; */
+    
+        }
+    .logo_nav{
+        width: 100px;
+        margin-top: -20px;
+        margin-right: 300px;
+    }
+    .formRegCur{
+        display: flex;
+        justify-content: center;
+        width: 600px;
+        height: auto;
+        padding: 0%;
+        
+    }
+    .formRegCurso{
+    
+       max-width: 1000px;
+       min-width: 100px;
+       min-height: max-content;
+       
+        
+    }
+    .titulo_fomulario{
+        font-family: 'Roboto', sans-serif;
+        padding-bottom:0px;
+        margin-top: 5px;
+        margin-left: 222px;
+        font-size: 2rem;
+        text-align: center;    
+        
+    }
+    .formulario_bloque{
+       width: 600px; 
+        margin-bottom: 2.5em;
+    }
+    .form_etiqueta{
+        font-size: 1.8em;
+    }
+    .input_txtArea{
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.2em;
+    
+    }
+    
+    .input_formulario{
+        width: 100%;
+        font-size: 1.8em;
+    }
+    
+    .botons{
+        width: 600px;
+        margin: 50px 20px;
+        
+        
+        
+        }
+    .btn_submit{
+        width: 25%;
+        margin-top: 10px;
+        background: #3866f2;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+        padding: .8em 0;
+        border: none;
+        border-radius: .5em;
+        }
+    .btn_cancel{
+        width: 25%;
+        background: #98281a;
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+        padding: .8em 0;
+        border: none;
+        border-radius: .5em; 
+    }
+    .tablaCursos{
+        
+    }
+    
+    
+    }
+    
+
+
+
+

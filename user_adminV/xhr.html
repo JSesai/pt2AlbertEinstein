@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJEMPLO AJAX </title>
+</head>
+<body>
+    <h1>Ejemplo Ajax</h1>
+    <form action="probando.php" method="POST">
+        <input type="text" name="usuario" placeholder=" nombre usuario">
+        <input type="password" name="clave" placeholder="clave">
+        <input type="submit" value="registrar" class="botonSubmit">
+    </form>
+
+    <div id="respuesta"><A>Aqui va la respuesta</A></div>
+
+
+
+    <script>
+        //peticiones XMLHttpRequest de manera dinamica
+
+        //recuperamos el formulario
+        var form= document.querySelector('form');
+        //recuperamos el boton submit para manejarlo
+        var boton= document.querySelector('.botonSubmit')
+        //manejamos el metodo submit del formulario
+        form.onsubmit= e => {
+
+            //instanciamos a variable objeto formData que emula al formulario y pasamos como parametro la variable que guarda al formulario
+            var fd= new FormData(form);
+        
+            //desabilitamos boton submit
+            boton.disabled= false;
+            
+            //prevenimos la accion por defecto del submit que es navegar a otro archivo
+            e.preventDefault( );
+            //instanciamos el objeto XMLHttpRequest y lo guardamos en variable llamada ajax
+            var ajax= new XMLHttpRequest ();
+
+         
+
+            //usamos el metodo open que abre la conexion, recibe tre parametros como argumentos, el primero: metodo de envio, el segundo: la url a donde viaja la peticion y el tercero es: valor boleano que define si es asincrono o sincrono, sino se pone por default se determina como true, es decir asincrona
+            ajax.open('POST', 'probando.php',true);
+
+           
+            ajax.onload= function (){
+
+                // manejamos el estado de la respuesta del servidor si es 200 el archivo fue encontrado y la respuesta es ok
+                if(ajax.status==200){
+                    //console.log('cargado el estado' + ajax.status);
+                    //habilitamos boton una vez que se tiene la respuesta
+                    boton.disabled= false;
+
+                    //agregamos la respuesta al div llamado respuesta
+                    document.querySelector('#respuesta').innerHTML= ajax.responseText;
+
+                    //reseteamos campos del formulario
+                    form.reset();
+                }
+            }
+            
+            //hacemos la llamada y pasamos como argumento el formData
+            ajax.send( fd );
+
+
+        }
+       
+        
+    </script>
+</body>
+</html>
