@@ -1,0 +1,1493 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto:wght@300;400;700&display=swap');
+
+/*Definimos los colores y las guardamos en variables para acceder a ellas desde el codigo*/
+:root{
+    --color-menu: #125B50;
+    --color-menu-hover: #1d201e;
+    --color-menu-hamburguesa:rgb(207, 129, 129); 
+    --color-backgroundMobilCards: #FCF8E8; 
+    --color-backgroundMediumCards: #344969; 
+    --color-backgroundUpyDown:rgba(6,17,52,1);
+    --color-fondo:#2367ab; 
+    --color-fondo960:#152b41;
+    --color-fondo1400:#1873ce;
+    --color-letra1:black;
+    --color-letra2:white;
+    --color-letra3:red;
+    --color-lineasCard:black; 
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+
+.menu{grid-area: menu;}
+.cont__form{grid-area: formulario;}
+.content__tabla{grid-area: tabla;}
+.patas{grid-area: patas;}
+
+.container__general {
+    /*le indicamos que abarque todo el largo de la ventana*/
+    
+    width: auto;
+    height: auto;
+    border: solid pink 2px;
+    background-color:var(--color-background);
+    /*hacemos uso de grid con display:grid*/
+    display: grid;
+    /*definimos las areas que tendra el layout*/
+    grid-template-areas:
+    
+    'menu menu menu'
+    'formulario tabla tabla'
+    'formulario tabla tabla'
+    'patas patas patas'
+    ;
+  
+    /*Indicamos la separacion entre cada columna*/
+    gap: 0px;
+  
+     background-color: var(--color-fondo960);
+     min-height: 100vh;  
+}
+
+.container__general>*{
+ width: 100%;
+ height: 100%;
+ border: solid red 2px;
+
+}
+
+/* inicio oculto, para ocultar las letras  */
+
+.itemInicio{
+    visibility: collapse;
+}
+
+/* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
+.btnMenu{
+visibility:hidden;
+margin: 0;
+padding: 0;
+width: 0;
+height: 0;
+
+}
+/* quitamos el input que despliega el menu en tamaño mobil */
+.check{
+display: none;
+width: 0;
+height: 0;
+}
+
+.logodeBarraNav {
+width: 100px;
+padding-top: 10px;
+padding-bottom: 5px;
+padding-left: 10px;
+margin-top: -37px;
+margin-left: -25px;
+background-color: rgb(44, 64, 128);
+
+}
+.logodeBarraNav:hover{
+background-color: rgb(44, 64, 128);
+}
+
+.menu{
+
+
+width: 100%;
+height: 88px;
+background-color:var(--color-backgroundUpyDown);
+border: solid rgba(0, 255, 42, 0.52) 2px;
+
+
+}
+
+/* quitamos el estilo de lista a los elementos de la lista y ajustamos tamaño de fuente*/
+.itemMenu{
+list-style: none;
+font-size: 1.2em;
+text-align: center;
+margin-left: .5em;
+margin-top: 0px;
+
+
+}
+
+/* LI que contiene la imagen y el nombre de usuario */
+#datosPersonales{
+    margin-top: -20px;
+}
+
+/* nombre de usuario */
+.nombreUsr{
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;    
+    /* border: solid gold 2px; */
+    
+    
+}
+
+/* imagen del usuario */
+.imgAdmin{
+    width: 25px;
+    border-radius: 15px;
+    border: solid black 2px;   
+}
+
+
+
+.imgMenuCat{
+    width: 50px;
+}
+
+/* //quitamos la imagen de menu que para mobil */
+.imgMenuCatResp{
+    display: none;
+}
+
+.itemMenu a{
+
+color: grey;
+font-size: .9em;
+
+}
+/* cuando el cursor esta sobre el elemento del menu cambia de color */
+.itemMenu a:hover{
+/* background-color: var(--color-menu-hover); */
+
+color: white;
+border-bottom: solid var(--color-letra2) 1px;
+
+}
+
+.imgMochila{
+    width: 40px;
+    margin-top: -150px;
+    
+}
+
+.itemMenu input{
+    margin-left: 240px;
+    border-radius: 10px;
+    height: 30px;
+    border-bottom: solid #152b41 1px;
+    width: 250px;
+}
+
+/* le damos formato a los elemtos del menu desplegable y tambien los ocultamos con display:none */
+.items{
+display: flex;
+justify-content: flex-start;
+width: 98%;
+height: 50px;
+margin-top:-100px;;
+margin-left: -30px;
+/* background-color: var(--color-fondo); */
+background-color:var(--color-backgroundUpyDown);
+opacity: .7;
+
+color: var(--color-menu-hover);
+font-family: 'Roboto', sans-serif;
+ 
+}
+
+
+/* contenedor de todos los cursos a este elemento se aplica propiedades flex box */
+.cardCurso{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+align-items: flex-start; 
+width: 100%;
+
+
+}
+/* ajustamos el tamaño y propiedades de cada card */
+.card{
+margin-top: 10px;
+width: 200px;
+height: 400px;
+
+border: solid rgb(99, 82, 231) 2px;
+border-radius: 15px;
+margin: 8px; 
+background-color: var(--color-backgroundMediumCards);
+/* transition: 1s all;  */
+
+
+}
+/* cuando el puntero esta sobre la card */
+.card:hover{
+
+background-color: var(--color-fondo);
+border: solid rgb(53, 53, 59) 2px;
+box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+transform: scale(1.1);
+}
+/* ajustamos la cabecera de la card */
+.card-header{
+text-align: center;
+color: rgb(227, 232, 237);
+font-family: 'Roboto', sans-serif;
+font-size: 10px;
+height: 48px;
+}
+
+/* div que contiene al p de  la descripcion del curso */
+.descripcionCurso {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 1px;
+padding: 2px;
+text-align: justify;
+overflow: hidden;
+
+width: 100%;
+
+}
+.descripcionCurso p{
+    color: rgb(204, 219, 235);
+font-family: 'Roboto', sans-serif;
+font-size: 13px;
+text-align: justify;
+width:auto ;
+height: 80px;
+padding: 5px;
+
+
+}
+
+/* formato al contenedor de la imagen */
+.imagenCurso{
+display: flex;
+justify-content: center;
+align-items: center;
+padding: .2em;
+height: 160px;
+border-bottom: solid var(--color-lineasCard) 2px;
+
+}
+/* formato a la imagen */
+.imgcard{
+height: 130px;
+width: 180px;
+max-height: 100%;
+max-width: 100%;
+
+
+border-radius: 10px;
+
+
+}
+.card-footer{
+
+width: 100%;
+display: flex;
+justify-content: space-around;
+align-items: flex-end;
+margin-right: 20px;
+margin-bottom: 0px;
+margin-top: 10px;
+
+}
+/* le damos formato al div que contiene el costo*/
+.costo{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(72, 210, 109);
+border-radius: 5px;
+border: solid black 1px;
+padding: 3px 20px 3px;
+font-size: 15px;
+height: 20px;
+width: 22px;
+}
+.costo:hover{
+background-color: rgb(143, 198, 157);
+}
+
+/* le damos formato al div que contiene a la imagen mochila */
+.mochila{
+background-color: rgb(66, 74, 224);
+border-radius: 5px;
+border: solid black 1px;
+padding: 3px 20px 3px;
+height: 20px;
+width: 22px;
+}
+.mochila:hover{
+background-color: rgb(34, 43, 212);
+}
+/* tamaño de la imagen mochila */
+.mochila a img {
+width: 20px;
+
+}
+.patas{
+
+background-color: var(--color-backgroundUpyDown);
+width: auto;
+height: auto;
+
+}
+/* formato flex box a div de las redes sociales */
+.patas1{
+margin-top: 1em;
+display: flex;
+justify-content: space-around;
+width: auto;
+height: auto;
+
+}
+/* le damos formato a div que contiene derechos reservados */
+.patas2{
+color: var(--color-letra2);
+text-align: center;
+margin-bottom: 0;
+width: auto;
+height: auto;
+}
+/* le damos tamaño a las imagenes de redes sociales */
+.itemfoot a img {
+width: 35px;
+
+}
+/* formato cuando este sobre la imagen */
+.itemfoot a img:hover{
+
+border-radius: 20px;
+background-color: var(--color-fondo);
+border: solid rgb(53, 53, 59) 2px;
+box-shadow: -6px 2px 46px 0px rgba(84, 79, 231, 0.75);
+}
+
+
+.opcAdm_titulo{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.3em;
+    color: #1d201e;
+    
+}
+
+.buscador{
+   
+    visibility: hidden;
+}
+
+.administra a img{
+    width: 25px;
+}
+
+.imgMenu{
+    width: 40px;
+    padding-top: -50px;
+    padding-right: 20px;
+}
+
+/* imagen del perfil del usuario */
+.imgPerfil {
+    visibility: visible;
+    margin-top: -10px;
+    width:40px;
+    border-radius:20px;
+    margin-left: 120px;
+    
+}
+
+
+/* imagen de cerrar sesion del usuario */
+.imgCcerrarSes{
+    visibility: visible;
+    width: 40px;
+    padding-top: -50px;
+    padding-right: 0px;
+    margin-left: 100px;
+}
+
+/* area de busqueda del formulario */
+#areaBuscar{
+   height:28px ;
+    width:200px;
+    border-radius: 5px;
+    margin-left: 200px;
+}
+
+/* boton buscar de la barra de navegacion */
+#btnBuscar{
+    width: 100px;
+    height: 33px;
+    border-radius: 5px;
+    background-color: #228c36;
+    cursor: pointer;
+}
+
+/* FORMATO A CONTENIDO DEL TEST --------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.formTest{
+    border: solid red 2px;
+   
+   
+}
+
+#exam-form{
+    display: inline;
+    color:azure;
+}
+
+.question> input{
+    border-radius: 8px;
+    border: 1px solid #0A3871;
+    color: #0A3871;
+    width: 17%;
+    height: 17px;
+    padding: 4px;
+    background-color: #F3F5FC;
+    font-size: 18px;
+    margin:5px 2px ;
+}
+
+#pregunta-1{
+width: 70%;
+display: block;
+}
+
+.question> label{
+    font-size: 21px;
+}
+
+.question{
+margin: 20px 0;
+
+}
+#questions{
+    padding-bottom:10px ;
+    border-bottom: solid black 2px;
+}
+
+
+.modal{
+    position: sticky;
+    width: 600px;
+    height: 400px;
+    margin-top: -650px;
+    margin-left: 230px;
+    background-color: #0A3871;
+    /* border: solid black 2px; */
+    
+}
+
+.btnCerrar {
+    border: #0A3871;
+    border-radius: 10px;
+    width: 140px;
+    height: 20px;
+    margin-top: 300px ;
+    margin-left: 450px;
+}
+
+.select{
+   
+    width: 300px;
+    margin-top: -310px;
+    
+}
+.contenedor_formulario{
+    border: solid red 3px;
+    width: auto;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    
+}
+
+#formulario{
+    border: solid black 2px;
+    width: 300px;
+    height: 600px;
+    
+    
+    
+}
+.input_form{
+    
+    width: 80%;
+    height: 20px;
+    margin: 5px;
+
+}
+.input_form:first-child{
+    width: 20%;
+}
+
+.etiqueta_input{
+    color: aliceblue;
+    font-size: 20px;
+}
+
+
+
+.conTabla{
+    border: solid green 2px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    
+}
+
+table{
+    font-family: 'Roboto', sans-serif;
+    border:var(--color-cabecera);
+    border-collapse: unset;
+    border-spacing: 5px;
+    margin: 0;
+    font-size: 1em;
+    max-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+
+}
+
+.preguntaDom{
+    width: 60%;
+    border: solid #0A3871 2px;
+    color: #F3F5FC;
+}
+
+.resp{
+    width: 50%;
+}
+
+
+.quitar{
+    border: #0A3871;
+    border-radius: 5px;
+    background:#be1f3a ;
+    color: white;
+    
+}
+
+.actualizar{
+    border: #0A3871;
+    border-radius: 5px;
+    background:#1fbe27dd ;
+    color: white;
+}
+
+.testTemas{
+    text-align: center;
+}
+.listaTesta{
+
+    
+    height: 600px; /*Aqui puedes especificar el limite de alto */
+    overflow-y: auto; /* para que aparezca un scroll vertical */
+
+    
+}
+
+.mensajeAlertaOff{
+    opacity: 0; /* Inicia con opacidad 0 */
+    transition: opacity 1s; /* Aplica una transición a la opacidad con una duración de 1 segundo */
+    
+    display: none;
+
+}
+
+.mensajeAlertaOnn{
+    color: #07bbed;
+    background: #ed0707;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-size: 19px;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    opacity: 1;
+    
+    
+}
+
+
+   
+/* FIN FORMATO CONTENIDO DEL TEST */
+
+
+
+/*meidida de 960 a 1328 para ordenadores si queremos podemos incluir otra medida
+para ordenadores mas pequeños que va de  960 a 1024 *******************************************************************************************************************************************/
+@media (max-width:1328px){
+
+    .menu{grid-area: menu;}
+    .contenedor_formulario{grid-area: formulario;}
+    .content__tabla{grid-area: tabla;}
+    .patas{grid-area: patas;}
+
+    .container__general {
+        /*le indicamos que abarque todo el largo de la ventana*/
+        
+        width: auto;
+        height: auto;
+        
+        background-color:var(--color-background);
+        /*hacemos uso de grid con display:grid*/
+        display: grid;
+        /*definimos las areas que tendra el layout*/
+        grid-template-areas:
+        
+        'menu menu menu'
+        'formulario tabla tabla'
+        'patas patas patas patas'
+        ;
+      
+        /*Indicamos la separacion entre cada columna*/
+        gap: 0px;
+      
+         background-color: var(--color-fondo960);
+    }
+    
+    .container__general>*{
+     width: 100%;
+     height: 100%;
+    }
+ 
+    
+    
+
+    /* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
+    .btnMenu{
+    visibility:hidden;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+   
+  }
+  .check{
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .logodeBarraNav {
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    margin-top: -37px;
+    margin-left: -25px;
+    background-color: rgb(44, 64, 128);
+  
+}
+.logodeBarraNav:hover{
+    background-color: rgb(44, 64, 128);
+}
+
+.menu{
+
+
+    width: 100%;
+    height: 88px;
+    background-color:var(--color-backgroundUpyDown);
+    
+
+    
+}
+
+/* quitamos el estilo de lista a los elementos de la lista y ajustamos tamaño de fuente*/
+.itemMenu{
+    list-style: none;
+    font-size: 1.5em;
+    text-align: center;
+    margin-left: .5em;
+    margin-top: 0px;
+    
+  
+}
+
+.itemInicio{
+    visibility: visible;
+}
+
+.itemMenu a{
+    color: grey;
+    font-size: .8em;
+}
+/* cuando el cursor esta sobre el elemento del menu cambia de color */
+.itemMenu a:hover{
+    /* background-color: var(--color-menu-hover); */
+    color: white;
+    
+    border-bottom: solid var(--color-letra2) 1px;
+    
+}
+.imgMochila{
+    width: 40px;
+    margin-top: -150px;
+    
+}
+
+.itemMenu input{
+    margin-left: 150px;
+    border-radius: 10px;
+    height: 30px;
+    border-bottom: solid #152b41 1px;
+    width: 150px;
+}
+
+/* le damos formato a los elemtos del menu desplegable y tambien los ocultamos con display:none */
+.items{
+    display: flex;
+    justify-content: flex-start;
+    width: 98%;
+    height: 50px;
+    margin-top:-100px;;
+    margin-left: -30px;
+    /* background-color: var(--color-fondo); */
+    background-color:var(--color-backgroundUpyDown);
+    opacity: .7;
+    
+    color: var(--color-menu-hover);
+    font-family: 'Roboto', sans-serif;
+     
+}
+
+/* imagen del perfil del usuario */
+.imgPerfil {
+    visibility: visible;
+    margin-top: -10px;
+    width:40px;
+    border-radius:20px;
+    margin-left: 70px;
+    
+}
+
+
+/* imagen de cerrar sesion del usuario */
+.imgCcerrarSes{
+    visibility: visible;
+    width: 40px;
+    padding-top: -50px;
+    padding-right: 0px;
+    margin-left: 100px;
+}
+
+/* area de busqueda del formulario */
+#areaBuscar{
+   height:28px ;
+    width:140px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+/* boton buscar de la barra de navegacion */
+#btnBuscar{
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #228c36;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+
+  /* contenedor de todos los cursos a este elemento se aplica propiedades flex box */
+.cardCurso{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start; 
+    width: 100%;
+    
+}
+
+
+/* cuando el puntero esta sobre la card */
+ .card:hover{
+    
+    background-color: var(--color-fondo);
+    border: solid rgb(53, 53, 59) 2px;
+    box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+ }
+
+ .card-header{
+    text-align: center;
+    color: rgb(227, 232, 237);
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    height: 52px;
+    }
+
+
+
+
+/* ajustamos la descripcion del curso */
+.descripcionCurso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    text-align: justify;
+    color: rgb(204, 219, 235);
+    width: 85%;
+    height: 100px;
+    /* border: solid brown 2px; */
+  
+}
+.descripcionCurso p{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+/* formato al contenedor de la imagen */
+.imagenCurso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5em;
+    
+    border-bottom: solid var(--color-lineasCard) 2px;
+
+}
+   /* formato a la imagen */
+.imgcard{
+    height: 130px;
+    width: 180px;
+    max-height: 100%;
+    max-width: 100;
+    border-radius: 10px;
+    margin: 2px;
+   }
+.card-footer{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    /* border: solid red 2px; */
+    
+
+}
+/* le damos formato al div que contiene el costo*/
+.costo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(72, 210, 109);
+    border-radius: 5px;
+    border: solid black 1px;
+    padding: 3px 15px 3px;
+}
+.costo:hover{
+    background-color: rgb(143, 198, 157);
+}
+
+/* le damos formato al div que contiene a la imagen mochila */
+.mochila{
+    background-color: rgb(66, 74, 224);
+    border-radius: 5px;
+    border: solid black 1px;
+    padding: 3px 15px 3px;
+}
+.mochila:hover{
+    background-color: rgb(34, 43, 212);
+}
+/* tamaño de la imagen mochila */
+.mochila a img {
+    width: 20px;
+    
+}
+.patas{
+   
+    background-color: var(--color-backgroundUpyDown);
+}
+/* formato flex box a div de las redes sociales */
+.patas1{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+   
+}
+/* le damos formato a div que contiene derechos reservados */
+.patas2{
+    color: var(--color-letra2);
+    text-align: center;
+    margin-bottom: 0;
+}
+/* le damos tamaño a las imagenes de redes sociales */
+.itemfoot a img {
+    width: 35px;
+    
+}
+/* formato cuando este sobre la imagen */
+.itemfoot a img:hover{
+    
+     border-radius: 20px;
+    background-color: var(--color-fondo);
+    border: solid rgb(53, 53, 59) 2px;
+    box-shadow: -6px 2px 46px 0px rgba(84, 79, 231, 0.75);
+}
+
+
+}
+
+
+
+/* ************************FORMULARIO************************** */
+
+
+/* div contenedor del formulario */
+.contenedorForm{
+    /* border: solid black 2px; */
+    display: flex;
+    justify-content: center;
+
+    
+}
+
+/* etiqueta form */
+.formulario{
+border: solid brown 2px;
+font-family: 'Roboto', sans-serif;
+color: var(--color-backgroundMobilCards);
+
+font-size: 1rem;
+border-radius: 20px;
+background-color: var(--color-fondo960);
+border: solid rgb(53, 53, 59) 2px;
+box-shadow: -6px 2px 46px 0px rgba(84, 79, 231, 0.75);
+margin: 10px;
+
+}
+
+/* titulo del formulario */
+.titulo_fomulario{
+margin-top: 0;
+text-align: center;
+
+
+}
+
+.formBloque{
+
+padding: .5em ;
+
+}
+
+.inputForm{
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-bottom: #1d201e 2px;
+}
+
+.btn_cancel{
+    width: 140px;
+    background: #98281a;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .5em 0;
+    margin: 50px 20px;
+    border: none;
+    border-radius: .5em; 
+}
+
+.btn_submit{
+    width: 150px;
+    margin-top: 10px;
+    background: #3866f2;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .5em 0;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: .5em;
+
+}
+
+/* div que contiene a la barra de carga */
+.ZonaCarga{
+    width: 90%;
+    /* border: solid black 2px; */ 
+    display: flex;
+    justify-content: center;
+}
+
+/* barra de carga */
+.barraCarga{
+    width: 90%;
+    height: 25px;
+    
+}
+/* ****************************************************************************************************************************************************************************------------ */
+/* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+@media (max-width:960px) {
+ /*declaramos las propiedades para areas*/
+
+ .menu{grid-area: menu;}
+ .contenedor_formulario{grid-area: formulario;}
+ .conTabla{grid-area: tabla;}
+ .patas{grid-area: patas;}
+
+
+.container__general {
+    /*le indicamos que abarque todo el largo de la ventana*/
+    
+    width: auto;
+    height: auto;
+    
+    background-color:var(--color-background);
+    /*hacemos uso de grid con display:grid*/
+    display: grid;
+    /*definimos las areas que tendra el layout*/
+    grid-template-areas:
+    
+    'menu menu menu'
+    'formulario tabla tabla'
+    'patas patas patas'
+    ;
+  
+    /*Indicamos la separacion entre cada columna*/
+    gap: 0px;
+    min-height: 100vh; 
+}
+
+.container__general>*{
+   width: 100%;
+   height: 100%;
+    
+}
+
+
+
+.menu{
+    width: 100%;
+    background-color:var(--color-backgroundUpyDown);
+    
+}
+
+/* Logo de la barra de navegacion reducimos tamaño */
+.logodeBarraNav{
+    display: none;
+  
+}
+
+/* quitamos el estilo de lista a los elementos de la lista y ajustamos tamaño de fuente*/
+.itemMenu{
+    list-style: none;
+    font-size: 1.5em;
+    text-align: left;
+    margin-left: .5em;
+
+
+}
+/* cuando el cursor esta sobre el elemento del menu cambia de color */
+.itemMenu a:hover{
+    background-color: var(--color-menu-hover);
+    color: white;
+    box-shadow: 0px 0px 30px #ffffff;
+    
+}
+
+
+
+/* apuntamos a los elmentos del menu y despues a la imagen quitamos las imagenes y solo se muestra el texto */
+.itemMenu img{
+    display: none;
+ 
+}
+
+/* le damos formato a los elemtos del menu desplegable y tambien los ocultamos con display:none */
+.items{
+   
+    width: 90%;
+    height: 250px;
+    margin-top: -15px;
+    
+    margin-left: -30px;
+    background-color: var(--color-fondo960);
+    opacity: .6;
+    
+    color: var(--color-menu-hover);
+    font-family: 'Roboto', sans-serif;
+    display: none; 
+    
+}
+
+/* redimensionamos el tamaño de la imagen que simula al menu y le damos margen  */
+.btnMenu img{
+    visibility: visible;
+    margin: 10px;
+    width: 50px;
+    
+}
+
+/* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
+input:checked  ~ .items{
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+   
+  }
+  /* ocultamos el cuadro del check */
+input {
+    display: none;
+  }
+
+  /* contenedor de todos los cursos a este elemento se aplica propiedades flex box */
+.cardCurso{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start; 
+    width: 100%;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(6,17,52,1) 86%);
+}
+/* ajustamos el tamaño y propiedades de cada card */
+.card{
+    width: 200px;
+    border: solid black 2px;
+    border-radius: 15px;
+    margin: 10px; 
+    
+ }
+ /* ajustamos la cabecera de la card */
+ .card-header{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+}
+/* ajustamos la descripcion del curso */
+.descripcionCurso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    text-align: justify;
+    width: 90%;
+    overflow: hidden;
+  
+}
+
+/* formato al contenedor de la imagen */
+.imagenCurso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    border-bottom: solid var(--color-lineasCard) 2px;
+    height: 170px;
+
+}
+
+
+/* formato a la imagen de card*/
+.imgcard{
+    /* object-fit: contain; */
+    max-height: 150px;
+}
+/* ocultamos la imagen del perfil */
+.imgPerfil {
+    visibility: hidden;
+    
+    
+}
+/* ocultamos el nombre del usuario que aprece con la imagen de perfil */
+.nombreUsr{
+    visibility: hidden;
+}
+
+.imgCcerrarSes{
+visibility: hidden;
+}
+
+
+.card-footer{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+
+}
+
+/* tamaño de la imagen mochila */
+.mochila a img {
+    width: 20px;
+    
+}
+.patas{
+   
+    background-color: var(--color-backgroundUpyDown);
+}
+/* formato flex box a div de las redes sociales */
+.patas1{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+   
+}
+
+/* le damos formato a div que contiene derechos reservados */
+.patas2{
+    color: var(--color-letra2);
+    text-align: center;
+}
+
+.itemfoot a img {
+    width: 35px;
+}
+
+}
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+Colocamos las media queris esta primera es para dispositivos moviles 
+que van de 0 a 480 */
+@media (max-width:480px){
+    
+   
+/*declaramos las propiedades para areas*/
+
+.menu{grid-area: menu;}
+.aside{grid-area: aside;}
+.contenedor_formulario{grid-area: formulario;}
+.conTabla{grid-area: tabla;}
+.patas{grid-area: patas;}
+
+
+.container__general {
+    /*le indicamos que abarque todo el largo de la ventana*/
+    
+    width: auto;
+    height: auto;
+    
+    background-color:var(--color-background); 
+    /*hacemos uso de grid con display:grid*/
+    display: grid;
+    /*definimos las areas que tendra el layout*/
+    grid-template-areas:
+    
+    'menu'
+    'formulario'
+    'tabla'
+    'patas'
+    ;
+  
+    /*Indicamos la separacion entre cada columna*/
+    gap: 0px;
+     
+}
+
+.container__general>*{
+    width: 100%;
+   
+    
+}
+
+
+
+
+.menu{
+    background-color:var(--color-backgroundUpyDown);
+    
+}
+
+/* quitamos el estilo de lista a los elementos de la lista y ajustamos tamaño de fuente*/
+.itemMenu{
+    list-style: none;
+    font-size: 1.2em;
+    text-align: left;
+
+}
+
+.itemInicio{
+    visibility: visible;
+}
+
+
+/* apuntamos a los elmentos del menu y despues a la imagen quitamos las imagenes y solo se muestra el texto */
+.itemMenu img{
+    display: none;
+ 
+}
+
+/* no mostramos los elemtos del menu */
+.items{
+    width: 70%;
+    margin-top: -8px;
+    margin-left: -30px;
+    background-color: var(--color-menu-hamburguesa);
+    opacity: .8;
+    color: var(--color-letra3);
+    text-align: left;
+    display: none;
+    
+    
+   
+}
+/* Logo de la barra de navegacion, ocultamos y reducimos tamaño */
+.logodeBarraNav{
+    display: none;
+    
+
+}
+
+/* ajustamos el tamaño del icono del menu */
+.btnMenu img{
+    visibility: visible;
+    margin: 10px;
+    width: 40px;
+    
+}
+
+/* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
+input:checked  ~ .items{
+    display:block;
+  }
+
+input {
+    display: none;
+  }
+
+
+
+
+.cardCurso{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(6,17,52,1) 86%);
+}
+.card{
+   width: 300px;
+   height: 450px;
+   border: solid black 2px;
+   border-radius: 30px;
+   margin: 20px; 
+   
+}
+
+.card-header{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+/* titulo del card */
+.card_titulo{
+    font-size: 15px;
+    height: 30px;
+}
+
+
+.descripcionCurso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+    width: 80%;
+  
+}
+/* formato al contenedor de la imagen */
+.imagenCurso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5em;
+    border-bottom: solid var(--color-lineasCard) 2px;
+
+}
+
+/* formato a la imagen */
+.imagenCurso img{
+ border-radius: 10px;
+}
+
+/* ocultamos la imagen del perfil */
+.imgPerfil {
+    visibility: hidden;
+    
+    
+}
+/* ocultamos el nombre del usuario que aprece con la imagen de perfil */
+.nombreUsr{
+    visibility: hidden;
+}
+
+.imgCcerrarSes{
+visibility: hidden;
+}
+
+.descripcionCurso p {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    text-align: justify;
+}
+
+.card-footer{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+
+}
+/* tamaño de la imagen mochila */
+.mochila a img {
+    width: 20px;
+    
+}
+
+
+.patas{
+   
+    background-color: var(--color-backgroundUpyDown);
+}
+
+.patas1{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+   
+}
+.patas2{
+    color: var(--color-letra2);
+    text-align: center;
+}
+
+.itemfoot a img {
+    width: 35px;
+}
+
+}

@@ -47,10 +47,8 @@ if (!isset($_SESSION["usuario"])) {
 
                     <li class="itemMenu"><a href=""></a></li>
                     <li class="itemMenu"><input type="text" placeholder="Buscar" class="buscador"></li>
-                    <li class="itemMenu">
-                        <p class="nombreUsr"><?PHP echo "Alumno: ". $name ?></p>
-                    </li>
-                    <li class="itemMenu"><a href="datosPersonales.php"><img src="" alt="FotoAdm"></a></li>
+                    
+                    <li class="itemMenu"><a href="datosPersonales.php"><img src="" alt="FotoAdm"><figcaption><?PHP echo "Alumno: ". $name ?></figcaption></a></li>
                     <li class="itemMenu"><a href="../SessionClose.php">Cerrar Sesión</a></li>
 
 

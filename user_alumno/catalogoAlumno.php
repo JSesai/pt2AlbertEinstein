@@ -77,7 +77,7 @@ $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fe
         <div class="cardCurso">
             <?PHP
             //empleamos un foreach para repetir la estructura de la tabla para cada registro y mostrarlos en pantalla
-            foreach ($registros as $cursos) : ?>
+            foreach ($registros as $cursos) : ?> 
                 <div class="card">
                     <div class="card-header">
                         <h1 class="card_titulo"><?PHP echo $cursos->nombre_curso ?></h1>
@@ -97,7 +97,7 @@ $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fe
                         <!-- agregar a mochila pasa el id en el enlace atraves de la url y lo guarda en la BD  -->
                         <div class="mochila"><a href="procesos.php?id=<?php echo $cursos->id_curso ?>"><img src="../img/imgsysgerde/mochila2.png" alt="Agregar a mochila"></a></div>
 
-
+ 
 
                     </div>
                 </div>

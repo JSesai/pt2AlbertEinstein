@@ -1,30 +1,37 @@
 <?PHP
-//se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
-session_start();
-//validamos si no hay nada almacenado informacion en la variable global SESSION
-if (!isset($_SESSION["usuario"])) {
-    header("Location:../login.php");
-} else {
-
-    //recuperamos variables globales las almacenamos en locales para uso en este ambito
-    //almacena el id del usuario
-    $user = $_SESSION["IdUser"];
-    //almacena el nombre del usuario
-    $name = $_SESSION["usuario"];
-
-    $idCurso = $_GET["id"];
-
-
-    //llamamos al archivo donde se efectua la conexion a la BD
-    include("../conectBD/Conexion.php");
-
-    //hacemos una consulta a la tabla de cursos para extraer la informacion del curso seleccionado
-    $registros = $bds->query('SELECT * FROM curso WHERE id_curso=' . $idCurso)->fetchAll(PDO::FETCH_OBJ);
-
-    //empleamos un foreach para recorrer el array y poder obtener los valores de los campos de la tabla 
-    foreach ($registros as $cursos) {
+    //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+    session_start();
+    // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
+            
+        header("Location:../login.php");
     }
-}
+    // Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+    $_SESSION['LAST_ACTIVITY'] = time();
+        //validamos si no hay nada almacenado informacion en la variable global SESSION
+    if (!isset($_SESSION["usuario"])) {
+        header("Location:../login.php");
+    } else {
+
+        //recuperamos variables globales las almacenamos en locales para uso en este ambito
+        //almacena el id del usuario
+        $user = $_SESSION["IdUser"];
+        //almacena el nombre del usuario
+        $name = $_SESSION["usuario"];
+
+        $idCurso = $_GET["id"];
+
+
+        //llamamos al archivo donde se efectua la conexion a la BD
+        include("../conectBD/Conexion.php");
+
+        //hacemos una consulta a la tabla de cursos para extraer la informacion del curso seleccionado
+        $registros = $bds->query('SELECT * FROM curso WHERE id_curso=' . $idCurso)->fetchAll(PDO::FETCH_OBJ);
+
+        //empleamos un foreach para recorrer el array y poder obtener los valores de los campos de la tabla 
+        foreach ($registros as $cursos) {
+        }
+    }
 ?>
 
 

@@ -309,6 +309,24 @@ background: #3866f2;
     border-radius: .5em;
 }
 
+/* ___________________________________________________________ */
+
+.container__general{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.content__modal--table{
+    width: 300px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+    font-size: 5px;
+    
+
+}
+
 .mensajeError{
     color: green;
     position: fixed;

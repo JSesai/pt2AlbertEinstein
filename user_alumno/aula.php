@@ -1,14 +1,13 @@
-
 <?PHP
-        //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
-        session_start();
+//se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+session_start();
 
-  
+
 //validamos si no hay nada almacenado informacion en la variable global SESSION
 if (!isset($_SESSION["usuario"])) {
     header("Location:../fLogin.php");
 } else {
-  
+
     //recuperamos variables globales las almacenamos en locales para uso en este ambito
     //almacena el id del usuario
     $user = $_SESSION["IdUser"];
@@ -16,21 +15,20 @@ if (!isset($_SESSION["usuario"])) {
     $name = $_SESSION["usuario"];
 
 
-//llamamos al archivo donde se efectua la conexion a la BD
-include("../conectBD/Conexion.php");
+    //llamamos al archivo donde se efectua la conexion a la BD
+    include("../conectBD/Conexion.php");
 
-//hacemos una consulta atraves de inner join
-//llamamos al archivo donde se efectua la conexion a la BD
+    //hacemos una consulta atraves de inner join
+    //llamamos al archivo donde se efectua la conexion a la BD
 
-$registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descripcion_curso, curso.imgCurso FROM curso INNER JOIN curso_alumno ON curso.id_curso= curso_alumno.id_curso INNER JOIN alumno ON curso_alumno.id_matricula = alumno.id_matricula WHERE alumno.id_matricula='.$user)->fetchAll(PDO::FETCH_OBJ);
-
+    $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descripcion_curso, curso.imgCurso FROM curso INNER JOIN curso_alumno ON curso.id_curso= curso_alumno.id_curso INNER JOIN alumno ON curso_alumno.id_matricula = alumno.id_matricula WHERE alumno.id_matricula=' . $user)->fetchAll(PDO::FETCH_OBJ);
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 
-<head >
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +37,7 @@ $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descr
     <title>SysGeRDE</title>
 </head>
 
-<body> 
+<body>
     <div class="container" style="background-color:#105652;">
 
 
@@ -52,14 +50,16 @@ $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descr
                     <li class="itemMenu"><a href="index.php"><img src="../img/imgsysgerde/meniu.png" alt="Menu" class="imgMenuCatResp"></a></li>
 
                     <!-- aqui se pueden agregar enlaces -->
-                    <li class="itemMenu"><a href="index.php" class="itemInicio">Inicio<img src="../img/imgsysgerde/meniu.png" alt="Menu de opciones" class="imgMenuCat"></a></li>
+                    <li class="itemMenu"><a href="index.php" class="itemInicio">Inicio </a></li>
                     <li class="itemMenu"><a href="formNewCur.php"></a></li>
                     <li class="itemMenu"><a href="formNewCur.php"></a></li>
 
 
-                    <li class="itemMenu"><input type="text" placeholder="Buscar"></li>
-                    <li class="elemenu"><a href=""><img src="../img/users/admin/charmanderAdm.png" alt="Mi perfil" class="imgPerfil"></a>
-                        <p class="nombreUsr"><?PHP echo $name ?></p>
+                    <li class="itemMenu"><input type="text" placeholder="Buscar" id="buscar"></li>
+                    <li class="elemenu"><a href=""><img src="../img/users/admin/charmanderAdm.png" alt="Mi perfil" class="imgPerfil">
+                            <figcaption id="usuario" class="nombreUsr"><?PHP echo "Alumno: " . $name ?></figcaption>
+                        </a>
+
                     </li>
 
 
@@ -72,6 +72,9 @@ $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descr
                 </ul>
             </nav>
         </div>
+
+        <!-- colocamos divs para contener las cards de los cursos-->
+
 
         <!-- colocamos divs para contener las cards de los cursos-->
 
@@ -94,10 +97,9 @@ $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descr
                     </div>
                     <div class="card-footer">
                       
-                        <!-- agregar a mochila pasa el id en el enlace atraves de la url y lo guarda en la BD  -->
-                        <div class="mochila"><a href="cursoMochila.php?id=<?php echo $cursos->id_curso ?>"><img src="../img/imgsysgerde/entraAula.png" alt="Cursar"></a></div>
-
-
+                        <!-- ingresa a pagina que contiene los temas,  pasa el id en el enlace atraves de la url  -->
+                        <div class="mochila"><a href="CursoVideoAl.php?id=<?php echo $cursos->id_curso ?>"><img src="../img/imgsysgerde/entraAula.png" alt="Cursar"></a></div>
+                       
 
                     </div>
                 </div>
@@ -161,7 +163,7 @@ $registros = $bds->query('SELECT curso.id_curso, curso.nombre_curso, curso.descr
 
 
 
-
+    <script src="aula.js"></script>
 </body>
 
 </html>

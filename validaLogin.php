@@ -25,10 +25,8 @@ if ($_POST["loginUsers"]) {
         window.location.href ="index.php";
         </script>';
     } elseif ($tabla == "Directivo") {
-        // validaDir($correo, $pasUsr);
-        echo '<script>window.alert("Sitio En construccion!!");
-        window.location.href ="index.php";
-        </script>';
+        validaDir($correo, $pasUsr);
+        
     } elseif ($tabla == "Docente") {
         // validaDocte($correo, $pasUsr);
         echo '<script>window.alert("Sitio En construccion!!");
@@ -111,8 +109,62 @@ function validaTut($correo, $pasUsr)
 }
 
 //valida el usuario directivo
-function validaDir($idUsr, $pasUsr)
-{
+function validaDir($correo, $pasUsr){
+    
+        try {
+    
+    
+            /*incluimos el archivo donde se encuentra la cadena de conexion */
+            include("conectBD/Conexion.php");
+            //incluimos los atributos para manejo de errores
+            $bds->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //incluimos uso de caracteres especiales
+            $bds->exec("SET CHARACTER SET utf8");
+    
+            //creamos la sentencia SQL select donde se muestra resultado si el id_medico y Password coinciden con lo introducido
+            //por el usuario,  empleamos marcadores con el fin de evitar inyecciones SQL 
+            
+            $status="activo";
+            //creamos la sentencia SQL SELECT empleamos marcadores con el fin de evitar inyecciones SQL 
+            $sql = 'SELECT id_directivo , correo, pass, estatus_directivo, nombre_dir, apePat_dir FROM directivo WHERE correo = :m_correo AND pass = :m_pas AND estatus_directivo= :m_status';
+            //hacemos uso de la sentencia preparada de nuestro objeto de conexion y le pasamos la sentencia sql
+            $resultado = $bds->prepare($sql);
+    
+            //sustituir los marcadores por las variables recuperadas del metodo POST que contiene la informacion que el usuario ingreso
+            $resultado->execute(array(":m_correo" => $correo, ":m_pas" => $pasUsr, ":m_status"=>$status));
+    
+            //guardamos el resultado en la varible registro
+            $registro = $resultado->fetch(PDO::FETCH_ASSOC);
+    
+            //validamos si existe el registro accediendo con la variable registro e indicando el nombre del campo tal cual esta en la base de datos
+            if ($registro["correo"] == $correo && $registro["pass"] == $pasUsr && $registro["estatus_directivo"] == $status) {
+                //si el usuario y contraseña son correctos entra a este bloque 
+    
+    
+                //iniciamos una sesion para el usuario que se ha logeado para poder ingresar a las paginas destino
+                session_start();
+    
+                //almacenamos en la variable global SESSION el id del usuario con el que ha niciado sesion para poder hacer consultas posteriormente usando where
+                $_SESSION["IdUser"] = $registro["id_directivo "];
+    
+                //almacenamos en la variable global $_SESION el nombre del usuario con ayuda de lo recuperado de la consulta.
+                $_SESSION["usuario"] = $registro["nombre_dir"];
+    
+                $_SESION["TpoUser"]= "Directivo";
+                //redirigimos a la pagina de index de directivo
+                header("location:user_directivo/index.php");
+            } else {
+                //si no coinciden el id y contraseña dirige a la pagina de logeo
+                //mostramos mensaje de registro exitoso
+                echo '<script>window.alert("Valida los datos, o registrate!!");
+            window.location.href ="login.php";
+            </script>';
+                $resultado->closeCursor();
+            }
+        } catch (Exception $e) {
+            die("Error:" . $e->getMessage());
+        }
+    
 }
 
 //valida el usuario Docente
@@ -183,8 +235,7 @@ function validaCont_esc($idUsr, $pasUsr)
 }
 
 
-function validaLogAdmin($correo, $pasUsr)
-{
+function validaLogAdmin($correo, $pasUsr){
     try {
 
 
@@ -238,7 +289,7 @@ function validaLogAdmin($correo, $pasUsr)
     }
 }
 
-//funcion que nos ayuda a validar en la bd los campos id y contraseña de medicos, ESTA FUNCION PERMITE EL INGRESO DE "" '' SI QUEREMOS SANEAR DEBEMOS EMPLEAR htmlentities
+//funcion que nos ayuda a validar en la bd los campos id y contraseña , ESTA FUNCION PERMITE EL INGRESO DE "" '' SI QUEREMOS SANEAR DEBEMOS EMPLEAR htmlentities
 function validaLogAdmins($correo, $pasUsr)
 {
     try {

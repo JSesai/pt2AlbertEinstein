@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJEMPLO AJAX </title>
+</head>
+<body>
+    <h1>Ejemplo Aja con GET</h1>
+    <!-- formulario que vamos a enviar -->
+    <form action="" method="get" id="formEnviadoGet" >
+        <!-- con el name=clave del input oculto vamos a identificar al formulario en el backend -->
+        <input type="hidden" name="clave" value="claveDelGet">
+        <input type="text" name="usuario" placeholder=" nombre usuario" id="usuario">
+        <input type="password" name="clave" placeholder="clave" id="pass">
+        <input type="submit" value="registrar" class="botonSubmit" name="form">
+    </form>
+
+    <!-- area para mostrar la respuesta -->
+    <div id="respuesta"></div>
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>
+

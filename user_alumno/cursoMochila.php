@@ -1,6 +1,7 @@
 <?PHP
 //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
 session_start();
+
 //validamos si no hay nada almacenado informacion en la variable global SESSION
 if (!isset($_SESSION["usuario"])) {
     header("Location:../login.php");
@@ -92,7 +93,7 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="card-footer">
 
                         <div class="administra"><a href="catalogo.php"><img src="../img/imgsysgerde/newTest.png" alt="Examen"></a></div>
-                        <div class="administra"><a href="CursoVideoAl.php?id=<?php echo  $tema->id_tema ?>"><img src="../img/imgsysgerde/play.png" alt="Play"></a></div>
+                        <div class="administra"><a href="CursoVideoAl.php?id=<?php echo  $tema->id_tema ?>&curso=<?php echo $idCurso ; ?>"><img src="../img/imgsysgerde/play.png" alt="Play"></a></div>
 
 
                     </div>
@@ -107,6 +108,17 @@ if (!isset($_SESSION["usuario"])) {
 
 
 
+
+        </div>
+
+        <div class="cardCurso">
+        
+        <input type="hidden" name="" id="idCurso" value="<?php echo $idCurso = $_GET["id"]; ?> ">
+                <ul id="listaTemas">
+                    
+
+                </ul>
+            </div>
 
         </div>
 
@@ -134,7 +146,7 @@ if (!isset($_SESSION["usuario"])) {
     </div>
 
 
-
+<script src="js/cursoMochila.js"></script>
 
 </body>
 

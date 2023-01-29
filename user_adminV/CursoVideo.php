@@ -1,37 +1,44 @@
 <?PHP
-//se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
-session_start();
-//validamos si no hay nada almacenado informacion en la variable global SESSION
-if (!isset($_SESSION["usuario"])) {
-    header("Location:../login.php");
-} else {
+    //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+    session_start();
+    // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
+            
+        header("Location:../login.php");
+    }
+    // Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+    $_SESSION['LAST_ACTIVITY'] = time();
+    //validamos si no hay nada almacenado informacion en la variable global SESSION
+    if (!isset($_SESSION["usuario"])) {
+        header("Location:../login.php");
+    } else {
 
-    //recuperamos variables globales las almacenamos en locales para uso en este ambito
-    //almacena el id del usuario
-    $user = $_SESSION["IdUser"];
-    //almacena el nombre del usuario
-    $name = $_SESSION["usuario"];
-    //recuperamos el Id y guardamos en variable
-    $idTem = $_GET["id"];
+        //recuperamos variables globales las almacenamos en locales para uso en este ambito
+        //almacena el id del usuario
+        $user = $_SESSION["IdUser"];
+        //almacena el nombre del usuario
+        $name = $_SESSION["usuario"];
+        //recuperamos el Id y guardamos en variable
+        $idTem = $_GET["id"];
 
 
-    //llamamos al archivo donde se efectua la conexion a la BD
-    include("../conectBD/Conexion.php");
+        //llamamos al archivo donde se efectua la conexion a la BD
+        include("../conectBD/Conexion.php");
 
-    // //hacemos una consulta a la tabla de cursos para extraer los temas del curso seleccionado
-    // $registros = $bds->query('SELECT  FROM tema WHERE id_curso=' . $idTem)->fetchAll(PDO::FETCH_OBJ);
+        // //hacemos una consulta a la tabla de cursos para extraer los temas del curso seleccionado
+        // $registros = $bds->query('SELECT  FROM tema WHERE id_curso=' . $idTem)->fetchAll(PDO::FETCH_OBJ);
 
-    //para usarlo en la segunda consulta 
-    $sql2= 'SELECT vCont_tema, id_curso  FROM tema WHERE id_tema=:m_nomTem';
-    $res = $bds->prepare($sql2);
-    $res->execute(array(":m_nomTem" => $idTem));
-    
-    //guardamos el resultado en la varible registro
-     $result= $res->fetch(PDO::FETCH_ASSOC); 
-     //guardamos la direccion del video en variable
-    $video= $result["vCont_tema"];
-    $idCurso= $result["id_curso"];
-}
+        //para usarlo en la segunda consulta 
+        $sql2= 'SELECT vCont_tema, id_curso  FROM tema WHERE id_tema=:m_nomTem';
+        $res = $bds->prepare($sql2);
+        $res->execute(array(":m_nomTem" => $idTem));
+        
+        //guardamos el resultado en la varible registro
+        $result= $res->fetch(PDO::FETCH_ASSOC); 
+        //guardamos la direccion del video en variable
+        $video= $result["vCont_tema"];
+        $idCurso= $result["id_curso"];
+    }
 ?>
 
 

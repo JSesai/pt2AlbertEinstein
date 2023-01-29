@@ -1,12 +1,24 @@
 
 <?PHP
+//se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+session_start();
+
+// Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
+        
+    header("Location:../login.php");
+}
+// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+$_SESSION['LAST_ACTIVITY'] = time();
+
 
 //validamos si no hay nada almacenado informacion en la variable global SESSION
-if (isset($_SESSION["usuario"])) {
+if (!isset($_SESSION["usuario"])) {
     header("Location:../login.php");
-} else {
+}  else {
     //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
     session_start();
+    
     //recuperamos variables globales las almacenamos en locales para uso en este ambito
     //almacena el id del usuario
     $user = $_SESSION["IdUser"];

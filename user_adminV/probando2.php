@@ -130,7 +130,7 @@ $idTema = $_POST['idTema'];
 
     echo ("Valores insertados correctamente en la tabla test_preguntas ");    
   }else{
-    echo 'id con valor-> UPDATE';
+    
 
     $id= $_POST['idPregunta'];
 

@@ -1,41 +1,48 @@
 
 <?PHP
-        //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
-        session_start();
+    //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+    session_start();
+    // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+            
+        header("Location:../login.php");
+    }
+    // Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+    $_SESSION['LAST_ACTIVITY'] = time();
 
-  
-//validamos si no hay nada almacenado informacion en la variable global SESSION
-if (!isset($_SESSION["usuario"])) {
-    header("Location:../login.php");
-} else {
-  
-    //recuperamos variables globales las almacenamos en locales para uso en este ambito
-    //almacena el id del usuario
-    $user = $_SESSION["IdUser"];
-    //almacena el nombre del usuario
-    $name = $_SESSION["usuario"];
-}
-
-//si no se ha presionado el boton submit llamado buscar, entonces esta vacio y entra al if
-if(empty($_GET["buscar"])){
+   
+    //validamos si no hay nada almacenado informacion en la variable global SESSION
+    if (!isset($_SESSION["usuario"])) {
+        header("Location:../login.php");
+    } else {
     
-   
-    //llamamos al archivo donde se efectua la conexion a la BD
-include("../conectBD/Conexion.php");
-//hacemos una consulta a la tabla de cursos para mostrar todos los cursos
-$registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fetchAll(PDO::FETCH_OBJ);
-}else{
-    //obtiene lo que se ha escrito el input text de busqueda y lo guarda en $busqueda
-    $busqueda= $_GET["elementoBuscar"];
-   
-    //llamamos al archivo donde se efectua la conexion a la BD
+        //recuperamos variables globales las almacenamos en locales para uso en este ambito
+        //almacena el id del usuario
+        $user = $_SESSION["IdUser"];
+        //almacena el nombre del usuario
+        $name = $_SESSION["usuario"];
+    }
+
+    //si no se ha presionado el boton submit llamado buscar, entonces esta vacio y entra al if
+    if(empty($_GET["buscar"])){
+        
+    
+        //llamamos al archivo donde se efectua la conexion a la BD
     include("../conectBD/Conexion.php");
-    //hacemos una consulta a la tabla de cursos con el criterio de busqueda
+    //hacemos una consulta a la tabla de cursos para mostrar todos los cursos
+    $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fetchAll(PDO::FETCH_OBJ);
+    }else{
+        //obtiene lo que se ha escrito el input text de busqueda y lo guarda en $busqueda
+        $busqueda= $_GET["elementoBuscar"];
     
-    $registros = $bds->query("SELECT * FROM curso WHERE estatusCurso= 'activo' AND nombre_curso LIKE '%$busqueda%' " )->fetchAll(PDO::FETCH_OBJ);
-    
+        //llamamos al archivo donde se efectua la conexion a la BD
+        include("../conectBD/Conexion.php");
+        //hacemos una consulta a la tabla de cursos con el criterio de busqueda
+        
+        $registros = $bds->query("SELECT * FROM curso WHERE estatusCurso= 'activo' AND nombre_curso LIKE '%$busqueda%' " )->fetchAll(PDO::FETCH_OBJ);
+        
 
-}
+    }
 
 
 ?>

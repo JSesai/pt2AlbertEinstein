@@ -61,8 +61,14 @@ function validaLogMed($idUsr, $pasUsr){
             //si el usuario y contraseña son correctos entra a este bloque 
     
     
-         //iniciamos una sesion para el usuario que se ha logeado para poder ingresar a las paginas destino
-         session_start();
+         
+                //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+                    session_start();
+
+                   
+
+
+                
 
          //almacenamos en la variable global SESSION el id del usuario con el que ha niciado sesion para poder hacer consultas posteriormente usando where
          $_SESSION["IdUser"]= $registro["id_medico"]; 

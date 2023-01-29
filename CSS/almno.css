@@ -140,6 +140,12 @@ border-bottom: solid var(--color-letra2) 1px;
     width: 250px;
 }
 
+
+.imgMenuCat{
+    display: none;
+    width: 20px;
+}
+
 /* le damos formato a los elemtos del menu desplegable y tambien los ocultamos con display:none */
 .items{
 display: flex;
@@ -165,16 +171,16 @@ justify-content: center;
 flex-wrap: wrap;
 align-items: flex-start; 
 width: 100%;
+/* border: solid red 2px; */
 
 }
 /* ajustamos el tamaño y propiedades de cada card */
 .card{
-margin-top: 20px;
-width: 300px;
-
+margin-top: 2px;
+width: 200 px;
 border: solid rgb(99, 82, 231) 2px;
 border-radius: 15px;
-margin: 10px; 
+margin: 5px; 
 background-color: var(--color-backgroundMediumCards);
 
 
@@ -211,18 +217,20 @@ font-family: 'Roboto', sans-serif;
 
 /* formato al contenedor de la imagen */
 .imagenCurso{
-display: flex;
-justify-content: center;
-align-items: center;
-padding-bottom: 1.5em;
 
-border-bottom: solid var(--color-lineasCard) 2px;
+padding-bottom: 5px;
+
+/* border-bottom: solid var(--color-lineasCard) 2px; */
+
+border: solid green 2px;
+text-align: center;
 
 }
 /* formato a la imagen */
 .imagenCurso img{
-width: 80%;
-border-radius: 10px;
+width: 50%;
+border-radius: 5 px;
+
 }
 .card-footer{
 
@@ -308,7 +316,7 @@ display: none;
     font-family: 'Roboto', sans-serif;
     font-size: 2.3em;
     color: #1d201e;
-    height: 70px;
+    height: 30px;
 }
 
 .buscador{
@@ -475,12 +483,12 @@ para ordenadores mas pequeños que va de  960 a 1024 */
 /* ajustamos el tamaño y propiedades de cada card */
 .card{
     margin-top: 20px;
-    width: 300px;
+    width: 150px;
     border: solid rgb(99, 82, 231) 2px;
     border-radius: 15px;
-    margin: 10px; 
+    margin: 5px; 
     background-color: var(--color-backgroundMediumCards);
-    
+       
     
  }
 /* cuando el puntero esta sobre la card */
@@ -495,7 +503,7 @@ para ordenadores mas pequeños que va de  960 a 1024 */
     text-align: center;
     color: rgb(227, 232, 237);
     font-family: 'Roboto', sans-serif;
-    font-size: small;
+    font-size: 6px;
 }
 
 /* ajustamos la descripcion del curso */
@@ -518,15 +526,16 @@ para ordenadores mas pequeños que va de  960 a 1024 */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 1.5em;
+  
     
     border-bottom: solid var(--color-lineasCard) 2px;
 
 }
    /* formato a la imagen */
 .imagenCurso img{
-    width: 80%;
+    width: 40%;
     border-radius: 10px;
+    text-align: center;
    }
 .card-footer{
     
@@ -939,6 +948,7 @@ de 0 a 320 */
     width: 40px;
     
 }
+
 
 /* asociamos con la ~ cuando esta chequeado se muestran los elementos del menu */
 input:checked  ~ .items{
