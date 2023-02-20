@@ -1,4 +1,5 @@
 <?php
+
 //condicioneamos el data enviado por metodo AJAX 
 if(!isset($_POST["valor"])){
     //si esta vacio no hacemos nada

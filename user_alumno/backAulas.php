@@ -99,3 +99,4 @@ function valorBuscado(){
     echo 'EL backend esta respondiendo ahora. el usuario es :' .$name . ' y su id es: '.$user;
 
 }
+

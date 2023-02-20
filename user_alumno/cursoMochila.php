@@ -61,7 +61,7 @@ if (!isset($_SESSION["usuario"])) {
                     <li class="itemMenu"><a href="">Registrate</a></li>
                     <li class="itemMenu"><input type="text" placeholder="Buscar" class="buscador"></li>
                     <li class="itemMenu">
-                        <p class="nombreUsr"><?PHP echo "Alumno:" .$name ?></p>
+                        <p class="nombreUsr"><?PHP echo "Alumno:" . $name ?></p>
                     </li>
                     <li class="itemMenu"><a href="datosPersonales.php"><img src="" alt="FotoAlumno"></a></li>
                     <li class="itemMenu"><a href="../SessionClose.php">Cerrar Sesión</a></li>
@@ -93,7 +93,7 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="card-footer">
 
                         <div class="administra"><a href="catalogo.php"><img src="../img/imgsysgerde/newTest.png" alt="Examen"></a></div>
-                        <div class="administra"><a href="CursoVideoAl.php?id=<?php echo  $tema->id_tema ?>&curso=<?php echo $idCurso ; ?>"><img src="../img/imgsysgerde/play.png" alt="Play"></a></div>
+                        <div class="administra"><a href="CursoVideoAl.php?id=<?php echo  $tema->id_tema ?>&curso=<?php echo $idCurso; ?>"><img src="../img/imgsysgerde/play.png" alt="Play"></a></div>
 
 
                     </div>
@@ -112,16 +112,15 @@ if (!isset($_SESSION["usuario"])) {
         </div>
 
         <div class="cardCurso">
-        
-        <input type="hidden" name="" id="idCurso" value="<?php echo $idCurso = $_GET["id"]; ?> ">
-                <ul id="listaTemas">
-                    
 
-                </ul>
-            </div>
+            <input type="hidden" name="" id="idCurso" value="<?php echo $idCurso = $_GET["id"]; ?> ">
+            <ul id="listaTemas">
 
+
+            </ul>
         </div>
 
+    </div>
 
 
 
@@ -132,21 +131,22 @@ if (!isset($_SESSION["usuario"])) {
 
 
 
-        <div class="aside"></div>
-        <div class="patas">
-            <!-- Estructura del pie de pagina-->
-            
-            <div class="patas2">
-                <p> © Colegio Albert Einstein Oaxaca 2022. Todos los derechos reservados</p>
-            </div>
 
+    <div class="aside"></div>
+    <div class="patas">
+        <!-- Estructura del pie de pagina-->
+
+        <div class="patas2">
+            <p> © Colegio Albert Einstein Oaxaca 2022. Todos los derechos reservados</p>
         </div>
+
+    </div>
 
 
     </div>
 
 
-<script src="js/cursoMochila.js"></script>
+    
 
 </body>
 

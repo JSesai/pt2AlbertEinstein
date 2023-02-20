@@ -1,19 +1,15 @@
 <?PHP
-    //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
-    session_start();
-        // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
-            
-        header("Location:../login.php");
-    }
-    // Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
-    $_SESSION['LAST_ACTIVITY'] = time();
+//se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
+session_start();
 
-
-    //validamos si no hay nada almacenado informacion en la variable global SESSION
-    if (!isset($_SESSION["usuario"])) {
-        header("Location:../login.php");
-    } else {
+// Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800) ) {
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
+}elseif (!isset($_SESSION["usuario"])&&($_SESSION['tpoUser']!='Administrator')) { //validamos si no existe la sesion con usuario y la sesion es distinta de directivo se expira la sesion
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
+} else{
 
         //recuperamos variables globales las almacenamos en locales para uso en este ambito
         //almacena el id del usuario
@@ -22,14 +18,15 @@
         $name = $_SESSION["usuario"];
 
         
+        
+        //llamamos al archivo donde se efectua la conexion a la BD
+        include("../conectBD/Conexion.php");
+        
+        //hacemos una consulta a la tabla de cursos
+        $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fetchAll(PDO::FETCH_OBJ);
     }
-
-    //llamamos al archivo donde se efectua la conexion a la BD
-    include("../conectBD/Conexion.php");
-
-    //hacemos una consulta a la tabla de cursos
-    $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fetchAll(PDO::FETCH_OBJ);
-
+// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+$_SESSION['LAST_ACTIVITY'] = time();
 
 ?>
 

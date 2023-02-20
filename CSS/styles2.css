@@ -15,6 +15,7 @@
     --color-letra2:white;
     --color-letra3:red;
     --color-lineasCard:black; 
+   
     
 }
 
@@ -256,7 +257,7 @@ width: 100%;
 
 }
 .descripcionCurso p{
-    color: rgb(204, 219, 235);
+color: rgb(204, 219, 235);
 font-family: 'Roboto', sans-serif;
 font-size: 13px;
 text-align: justify;

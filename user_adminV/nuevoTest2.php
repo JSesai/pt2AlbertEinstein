@@ -3,17 +3,12 @@
 session_start();
 
 // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
-        
-    header("Location:../login.php");
-}
-// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
-$_SESSION['LAST_ACTIVITY'] = time();
-
-
-//validamos si no hay nada almacenado informacion en la variable global SESSION
-if (!isset($_SESSION["usuario"])) {
-    header("Location:../login.php");
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
+} elseif (!isset($_SESSION["usuario"]) && ($_SESSION['tpoUser'] != 'Administrator')) { //validamos si no existe la sesion con usuario y la sesion es distinta de directivo se expira la sesion
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
 } else {
 
     //recuperamos variables globales las almacenamos en locales para uso en este ambito
@@ -21,10 +16,9 @@ if (!isset($_SESSION["usuario"])) {
     $user = $_SESSION["IdUser"];
     //almacena el nombre del usuario
     $name = $_SESSION["usuario"];
-
-      
-
 }
+// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+$_SESSION['LAST_ACTIVITY'] = time();
 
 
 ?>
@@ -37,6 +31,7 @@ if (!isset($_SESSION["usuario"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/imgsysgerde/logo2.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/styleTest.css">
 
     <title>SysGeRDE</title>
@@ -51,7 +46,7 @@ if (!isset($_SESSION["usuario"])) {
                 <input type="checkbox" name="" id="btnMenu" class="check">
                 <label for="btnMenu" class="btnMenu"><img src="../img/imgsysgerde/meniu.png" alt="Menu"></label>
                 <ul class="items">
-                    <li class="itemMenu"><a href="index.php"><img src="../img/imgsysgerde/Logo_CAE.png" alt="Inicio" class="logodeBarraNav"></a></li>
+                    <li class="itemMenu"><a href="index.php"><img src="" alt="Inicio" class="logodeBarraNav"></a></li>
                     <li class="itemMenu"><a href="index.php"><img src="../img/imgsysgerde/meniu.png" alt="Menu" class="imgMenuCatResp"></a></li>
 
                     <!-- aqui se pueden agregar enlaces -->
@@ -77,42 +72,51 @@ if (!isset($_SESSION["usuario"])) {
             </nav>
         </div>
 
+        <div class="header">
+            <div class="contenedor__botones">
+                <input type="button" value="Test Actuales">
+                <input type="button" value="Agregar nueva pregunta" id="nuevaPregunta">
+                <input type="button" value="Nuevo test" id="nuevoTest">
+            </div>
+
+        </div>
 
         <div class="aside">
-            <div class="testTemas">
-                <h2>Test Actuales</h2>
-            </div>
-            <div class="listaTesta">
-            
+            <div class="contenedor_formulario__test">
+                <form action="probando2.php" id="formulario" method="POST">
+                    <div id="alertaForm"></div>
+                    <h2 class="titulo__modal__preguntas">Ingrese las Preguntas</h2>
+                    <input type="hidden" name="idPregunta" id="idPregunta">
+                    <label for="pregunta" class="etiqueta_input">Pregunta</label>
+                    <input type="text" class="input_form" placeholder="Ingresa la pregunta" name="pregunta" id="pregunta" required autocomplete="off">
+                    <label for="resp_ok" class="etiqueta_input">Respuesta correcta</label>
+                    <input type="text" class="input_form" name="resp_ok" id="resp_ok" placeholder="Ingresa la respuesta correcta" required autocomplete="off">
+                    <label for="op1" class="etiqueta_input">Opcion 1</label>
+                    <input type="text" class="input_form" name="op1" id="op1" placeholder="ingresa la opcion 1" required autocomplete="off">
+                    <label for="op2" class="etiqueta_input">Opcion 2</label>
+                    <input type="text" class="input_form" name="op2" id="op2" placeholder="ingresa la opcion 2" required autocomplete="off">
+                    <label for="op3" class="etiqueta_input">Opcion 3</label>
+                    <input type="text" class="input_form" name="op3" id="op3" placeholder="ingresa la opcion 3" required autocomplete="off">
 
-                <ul id="listaTest"></ul>
-            <input type="button" value="Actualizar Test" id="nuevoTest">
+
+                    <button class="btn-close">&times;</button>
+                    <!-- resto del contenido del modal -->
+
+
+
+                    <input type="submit" name="addPreg" value="Guardar" class="modal__btnAgregaPreg">
+                    <button class="saveAdd">Guardar y seguir agregando</button>
+
+                </form>
+
+
             </div>
         </div>
 
-        <div class="contenedor_formulario">
-            <form action="probando2.php" id="formulario" method="POST">
-                <div id="alertaForm"></div>
-                <h2 class="">Ingrese las Preguntas</h2>
-                <input type="hidden" name="idPregunta"  id="idPregunta">
-                <label for="pregunta" class="etiqueta_input">Pregunta</label>
-                <input type="text" class="input_form" placeholder="Ingresa la pregunta" name="pregunta" id="pregunta" required>
-                <label for="resp_ok" class="etiqueta_input">Respuesta correcta</label>
-                <input type="text" class="input_form" name="resp_ok" id="resp_ok" placeholder="Ingresa la respuesta correcta" required>
-                <label for="op1" class="etiqueta_input">Opcion 1</label>
-                <input type="text" class="input_form" name="op1" id="op1" placeholder="ingresa la opcion 1" required>
-                <label for="op2" class="etiqueta_input">Opcion 2</label>
-                <input type="text" class="input_form" name="op2" id="op2" placeholder="ingresa la opcion 2" required>
-                <label for="op3" class="etiqueta_input">Opcion 3</label>
-                <input type="text" class="input_form" name="op3" id="op3" placeholder="ingresa la opcion 3" required>
-
-                <input type="submit" name="addPreg" value="Agregar" class="btnAgregaPreg">
-            </form>
 
 
-        </div>
+        <div class="contenedor__tabla--preguntas-test">
 
-        <div class="conTabla">
             <table>
                 <thead>
                     <caption>
@@ -124,11 +128,16 @@ if (!isset($_SESSION["usuario"])) {
 
                     </tr>
                 </thead>
-
+                <!-- fragmento cargado dinamicamente con vanilla js -->
                 <tbody id="tbody">
                     <tr>
                         <td> </td>
 
+                    </tr>
+                    <tr>
+                        <ul id="listaTest">
+                            <!-- lista dinamica cargada desde js test -->
+                        </ul>
                     </tr>
                 </tbody>
 
@@ -180,15 +189,17 @@ if (!isset($_SESSION["usuario"])) {
             </div>
 
         </div>
-
+       
 
     </div>
 
 
 
-    <script src="test.js"></script>
+    <script src="js/test.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/alert.js"></script>
 
-   
+
 </body>
 
 </html>

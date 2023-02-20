@@ -5,10 +5,10 @@ session_start();
 // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800) ) {
     //redirige al archivo que destruye la sesion y rediracciona al login
-    header("Location:../sessionExpired.php");
+    header("Location:../loginUsuarios/sessionExpired.php");
 }elseif (!isset($_SESSION["usuario"])&&($_SESSION['tpoUser']!='Directivo')) { //validamos si no existe la sesion con usuario y la sesion es distinta de directivo se expira la sesion
     //redirige al archivo que destruye la sesion y rediracciona al login
-    header("Location:../sessionExpired.php");
+    header("Location:../loginUsuarios/sessionExpired.php");
 } else {
     
     //recuperamos variables globales las almacenamos en locales para uso en este ambito
@@ -167,7 +167,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                 </table>
 
             </div>
-            <script src="crudUsers.js"></script>
+            
         </div>
 
 
@@ -218,9 +218,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
     </div>
 
-
-
-
+    
+   
 </body>
 
 </html>

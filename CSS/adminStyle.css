@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Roboto:wght@300;400;700&display=swap');
+
+/* ************************ Custom properties *************************** */
+:root{
+    --color-barra-nav:#194350;
+    --first-color: rgb(234, 150, 40);
+    --first-alpha-color: rgba(217, 0, 98, 0.75);
+    --second-color: rgb(20, 25, 45);
+    --second-alpha-color: rgba(20, 25, 45, 0.75);
+    --third-color: rgba(80, 20, 100);
+    --third-alpha-color: rgba(80, 20, 100, 0.75);
+
+    --link-color: rgb(80,158,227);
+    --link-alpha-color: rgba(80, 158, 227, 0.75);
+
+    --bg-color: rgb(245, 245, 245);
+    --bg-alpha-color: rgba(245, 245, 245, 0.75);
+    --color-backgroundMediumCards: #344969; 
+    --color-fondo-catalogo:#93BFCF;
+
+}
+
+
+/* ************************ Reset Styles ******************************* */
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+a{
+    color: var(--link-color);
+    transition: all .3s ease-out;
+}
+a:hover{
+    color: var(--first-color);
+}
+/* ************************ bootstrap Styles *************************** */
+
+    /* color de fondo de la barra de navegacion */
+    .bg-dark{
+    background-color: var(--color-barra-nav) !important;
+    }
+    /* dejar fijo el texto del carrusel de contacto */
+    .carousel-caption{
+        z-index: 1;
+    }
+    /* cambiar color a flechas de next y previus del carrusel */
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d90062'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+    }
+      
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d90062'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+
+    /* items del submenu desplegable sitios */
+    .dropdown-item{
+        color: var(--first-alpha-color);
+        font-weight: bold;
+        transition: all 0.3s ease-out;
+    }
+    
+    /* items del submenu desplegable sitios en hover */
+    .dropdown-item :hover{
+        color: var(--third-alpha-color);
+    }
+    /* logotipo */
+    .navbar-brand img{
+        width: auto;
+        height: 3rem;
+    }
+    /* contenedor de imagen y nombre usuario */
+    #datosPersonales{
+        font-size: 10px;
+        margin: 0;
+        padding: 0;
+        border: solid red 2px;
+        height: 2px;
+    }
+    /* imagen usuario */
+    .imgAdmin{
+        width: auto;
+        height: 1.5rem;
+        border-radius: 16px;
+        
+        border: solid rgb(5, 212, 5) 2px;
+    }
+    /* nombre del usuario */
+    .nombreUsr{
+        font-size: 10px;
+        margin: 0;
+        padding: 0;
+       
+    }
+    /* menu de la imagen del usuario */
+    .menu-container {
+        position: relative;
+        left: -90px; /* movemos a la izquierda para evitar desborde */
+      }
+      
+    
+
+    /* color de la imagen menu hamburguesa */
+    .navbar-dark .navbar-toggler{
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        transition: all 0.3s ease-out;
+    }
+    /* color de la imagen menu hamburguesa en hover */
+    .navbar-dark .navbar-toggler:hover{
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28217, 0, 98, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        opacity: 0.75;
+    }
+    /* elementos del menu li */
+    .nav-item{
+        
+        transition: all 0.3s ease-out;
+    }
+    /* elementos del menu li en hover */
+    .nav-item:hover{
+        background-color: var(--first-alpha-color);
+    }
+    /* enlaces a */
+    .nav-link{
+        color: var(--first-color);
+        font-size: 1.15rem;
+        font-weight: bold;
+    }
+    /* enlace a con hover */
+    .nav-link:hover{
+        margin-left: 0.5rem;
+        color: var(--bs-white);
+    }
+
+
+
+/* ************************ My Styless ********************************* */
+
+
+.bg-third-color{
+    background-color: var(--third-color);
+}
+.text-third{ 
+    color: var(--third-color);
+}
+.background{
+    background-color: var(--bg-color);
+    
+}
+.background-catalogo{
+    background-color: var(--color-fondo-catalogo);
+    
+}
+
+.background-alpha{
+    background-color: var(--bg-alpha-color);
+    
+}
+
+.bg-second-alpha-color{
+    background-color: var(--second-alpha-color);
+}
+
+.bg-hero-image{
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   
+}
+.gradiente{
+    background-color: rgb(83, 184, 152, 1);
+    background-image: linear-gradient(
+        135deg,
+        rgba(28, 118, 173, 0.92),
+        rgba(83, 184, 152, 1) 79%
+    );
+}
+
+/* contenedor de todos los cursos a este elemento se aplica propiedades flex box */
+.cardCurso{
+   min-height: 470px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: auto;
+    
+}
+
+/* ajustamos el tamaño y propiedades de cada card */
+.card{
+    margin: 10px 5px;
+    width: 200px;
+    border: solid rgb(99, 82, 231) 2px;
+    border-radius: 15px;
+    background-color: var(--color-backgroundMediumCards);
+    transition: all 0.3s ease-out;
+}
+
+/* cuando el puntero esta sobre la card */
+.card:hover{
+
+    background-color: var(--color-fondo);
+    border: solid rgb(53, 53, 59) 2px;
+    box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+    transform: scale(1.1);
+    
+}
+/* ajustamos la cabecera de la card */
+.card-header{
+    text-align: center;
+    
+   
+}
+
+/* titulo del card */
+.opcAdm_titulo{
+    
+    font-size: 17px;
+    
+    /* border: solid red 2px; */
+    
+}
+
+/* formato al contenedor de la imagen */
+.imagenCurso{
+   text-align: center;
+     
+}
+/* formato a la imagen */
+.imagenCurso img{
+    width: 60px;
+    height: 50px;
+    max-width: 100%;
+    max-height: 60px;
+    margin: 2px;
+
+
+    border-radius: 0px;
+}
+    .card-footer{
+    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 11px;
+    
+    
+}
+/* imagen del fotter engrane */
+.administra a img{
+    width: 20px;
+}
+
+
+/* ***************************** Estilos CATALOGO ********************************************* */
+
+
+
+/* contenedor de todos los cursos a este elemento se aplica propiedades flex box */
+.card-catalogo{
+    /* border: solid red 1px; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start; 
+   
+}
+/* ajustamos el tamaño y propiedades de cada card */
+.contenedor-card{
+    margin-top: 10px;
+    width: 180px;
+    height: 270px;
+    border: solid rgb(99, 82, 231) 2px;
+    border-radius: 15px;
+    margin: 8px; 
+    background-color: var(--color-backgroundMediumCards);
+    /* transition: 1s all;  */
+
+}
+
+/* cuando el puntero esta sobre la card */
+.contenedor-card:hover{
+
+    background-color: var(--color-fondo);
+    border: solid rgb(53, 53, 59) 2px;
+    box-shadow: -6px 2px 46px 0px rgba(0,0,0,0.75);
+    transform: scale(1.1);
+}
+
+/* ajustamos la cabecera de la card */
+.cabecera-card{
+    color: rgb(227, 232, 237);
+    font-family: 'Roboto', sans-serif;
+    height: 50px;
+    /* border: solid red 2px; */
+}
+/* titulo del card */
+.titulo-card{
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    
+}
+
+.descripcion-curso-catalogo{
+    text-align: center;
+    width: auto;
+    height: 50px;
+    /* border: solid red 1px; */
+    overflow: hidden;
+
+  
+}
+
+/* formato al contenedor de la imagen */
+.imagen-curso{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2em;
+    height: 110px;
+    border-bottom: solid black 1px;
+    
+}
+
+/* formato a la imagen */
+.imagen-catalogo-card{
+    height: 100px;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+    
+    border-radius: 10px;
+    
+    
+}
+
+.card-footer-catalogo{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    
+}
+
+
+/* tamaño de la imagen mochila */
+.card-footer-mochila-catalogo a img {
+    width: 20px;
+    
+}
+
+
+
+/* estilos de perfil */
+.img-profile {
+    max-width: 80px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+
+
+
+/*  X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .cardCurso{
+     
+       
+        
+        
+    }
+   
+    
+    
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    /* elementos del menu li en hover en tamaño lg*/
+    .nav-item:hover{
+        background-color: transparent;
+    }
+    
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) { 
+     
+}

@@ -1,6 +1,7 @@
 <?php
 
 
+
 //ESTE CODIGO CONSULTA LOS TEMAS Y LOS RETORNA CODIFICADOS EN FORMATO JSON 
 include("../conectBD/Conexion.php");
 

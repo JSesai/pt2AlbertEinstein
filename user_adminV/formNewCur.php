@@ -1,16 +1,14 @@
 <?PHP
 //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
 session_start();
+
 // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 2400)) {
-        
-    header("Location:../login.php");
-}
-// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
-$_SESSION['LAST_ACTIVITY'] = time();
-//validamos si no hay nada almacenado informacion en la variable global SESSION
-if (!isset($_SESSION["usuario"])) {
-    header("Location:../login.php");
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
+} elseif (!isset($_SESSION["usuario"]) && ($_SESSION['tpoUser'] != 'Administrator')) { //validamos si no existe la sesion con usuario y la sesion es distinta de directivo se expira la sesion
+    //redirige al archivo que destruye la sesion y rediracciona al login
+    header("Location:../loginUsuarios/sessionExpired.php");
 } else {
 
     //recuperamos variables globales las almacenamos en locales para uso en este ambito
@@ -25,6 +23,8 @@ if (!isset($_SESSION["usuario"])) {
     //hacemos una consulta a la tabla de cursos
     $registros = $bds->query('SELECT * FROM curso')->fetchAll(PDO::FETCH_OBJ);
 }
+// Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
+$_SESSION['LAST_ACTIVITY'] = time();
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +58,7 @@ if (!isset($_SESSION["usuario"])) {
                     <li class="elemenu"><a href="">Temas</a></li>
                     <li class="elemenu"><a href="">Test</a></li>
                     <!-- <li class="elemenu"><a href="../SessionClose.php">Cerrar Sesión</a></li> -->
-                    
+
 
                 </ul>
                 <ul class="Menu2">
@@ -70,8 +70,8 @@ if (!isset($_SESSION["usuario"])) {
                             </figure>
                         </a>
                     </li>
-                    
-                    <li class="elemenu2"><a href="../SessionClose.php"><img src="../img/imgsysgerde/cerrarSesion.png" alt="Cerrar Sesion" class="imgCcerrarSes"></a></li>
+
+                    <li class="elemenu2"><a href="../loginUsuarios/SessionClose.php"><img src="../img/imgsysgerde/cerrarSesion.png" alt="Cerrar Sesion" class="imgCcerrarSes"></a></li>
 
 
 
@@ -196,6 +196,8 @@ if (!isset($_SESSION["usuario"])) {
                         <td class=""><img src="../img/<?PHP echo $cursos->imgCurso ?>" alt="Imagen de curso" width="100px"> </td>
                         <!-- mostramos el nombre del paciente y apellido con la ayuda de los alias incluidos en la consulta SELECT-->
 
+                        <td class="actualizar" item="<?php echo $cursos->id_curso ?>"><button>Actualizar</button> </td>
+
 
                     </tr>
                 <?PHP
@@ -208,6 +210,7 @@ if (!isset($_SESSION["usuario"])) {
 
         <div class="foot"></div>
     </div>
+    <script src="js/newCurso.js"></script>
 </body>
 
 </html>

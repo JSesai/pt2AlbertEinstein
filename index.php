@@ -38,10 +38,10 @@ $registros = $bds->query('SELECT * FROM curso WHERE estatusCurso= "activo"')->fe
                     <li class="itemMenu"><a href=""><img src="./img/imgsysgerde/mochila3.png" alt="mi mochila" class="imgMochila"></a></li>
                     <li class="itemMenu"><a href="temporal.php">Ofertas</a></li>
                     <li class="itemMenu"><a href="temporal.php">Contacto</a></li>
-                    <li class="itemMenu"><a href="user_alumno/formLogin.php">Inicia Sesión</a></li>
-                    <li class="itemMenu"><a href="user_alumno/formRegE.php">Registrate</a></li>
+                    <li class="itemMenu"><a href="loginUsuarios/formLogin.php">Inicia Sesión</a></li>
+                    <li class="itemMenu"><a href="loginUsuarios/formRegE.php">Registrate</a></li>
                     <li class="itemMenu"><input type="text" placeholder="Buscar"></li>
-                    <li class="itemMenu"><a href="login.php">Administrar</a></li>
+                    <li class="itemMenu"><a href="loginUsuarios/login.php">Administrar</a></li>
 
 
                 </ul>

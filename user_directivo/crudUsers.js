@@ -46,6 +46,8 @@ function insertUser(form){
             form.reset();
            
         }
+        rellenarTabla();
+
     }
   
     //hacemos la llamada y pasamos como argumento el formData
@@ -54,4 +56,10 @@ function insertUser(form){
     
   
   }
+
+function rellenarTabla(){
+
+
+    
+}
   

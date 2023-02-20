@@ -39,7 +39,7 @@ if (!isset($_SESSION["usuario"])) {
         //hacemos una consulta a la tabla de cursos para extraer los temas del curso seleccionado
         $registros2 = $bds->query('SELECT * FROM tema WHERE id_tema=' . $record)->fetchAll(PDO::FETCH_OBJ);
         $video = $registros2[0]->vCont_tema;
-        $nameTema = $registros[0]->nombre_curso;
+        $nameTema = $registros[0]->nombre_curso; 
         echo $nameTema;
     } else {
         echo 'solo existe el id del curso';
