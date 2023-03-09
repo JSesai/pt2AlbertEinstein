@@ -95,8 +95,7 @@ if (isset($_POST["subirCurso"])) {
 }
 
 
-function registrarCurso($nombreCurso, $descripcionCurso, $costoCurso, $nombre_imagen, $stado, $user, $categoria)
-{
+function registrarCurso($nombreCurso, $descripcionCurso, $costoCurso, $nombre_imagen, $stado, $user, $categoria){
 
     try {
 

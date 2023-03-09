@@ -72,6 +72,13 @@ $_SESSION['LAST_ACTIVITY'] = time();
             </nav>
         </div>
 
+        <div class="selecciona">
+             <select class="listCursos" id="listCursos">
+                <option>Selecciona el curso</option>
+              
+            </select>
+        </div>
+
         <div class="header">
             <div class="contenedor__botones">
                 <input type="button" value="Test Actuales">
@@ -189,7 +196,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
             </div>
 
         </div>
-       
+
 
     </div>
 

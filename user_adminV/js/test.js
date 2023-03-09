@@ -1,8 +1,10 @@
 window.onload = function() {
   // Código a ejecutar una vez que la página se haya cargado completamente
    console.log("JS test: ok");
-  var idSelec;
+   
   selecTemaTest();
+  
+
 
   //reuperamos formulario, boton submit
   var formulario = document.getElementById('formulario');
@@ -42,8 +44,6 @@ window.onload = function() {
   
 
 }
-// variable que almacena el id del tema seleccionado
- var valorSeleccionado;
 
 //recuperamos boton de nuevo test
 var btnNuevoTest = document.getElementById("nuevoTest");
@@ -94,143 +94,223 @@ function crearTest(){
 
 
 //crea un select tomando temas de BD, genera modal 
-function selecTemaTest(){
+// function selecTemaTest(){
   
- // btnNuevoTest.disabled=true;
+//  // btnNuevoTest.disabled=true;
  
 
 
-    // Crea una nueva instancia de XMLHttpRequest
-var xhr = new XMLHttpRequest();
-//console.log('objetoxhr creado'+xhr);
-xhr.addEventListener("error", function() {
-    console.error("Error al hacer la solicitud");
-  });
+//     // Crea una nueva instancia de XMLHttpRequest
+// var xhr = new XMLHttpRequest();
+// //console.log('objetoxhr creado'+xhr);
+// xhr.addEventListener("error", function() {
+//     console.error("Error al hacer la solicitud");
+//   });
   
-// Abre una conexión con el archivo PHP
-xhr.open("GET", "probando.php", true);
+// // Abre una conexión con el archivo PHP
+// xhr.open("GET", "probando.php", true);
 
-// Envía la solicitud
-xhr.send();
+// // Envía la solicitud
+// xhr.send();
 
-// Cuando se recibe la respuesta, procesa los datos
-xhr.onload = function() {
-  if (xhr.status == 200) {
-    // Obtiene los datos de la respuesta
-    //muestra los datos de respuesta 
-   // console.log('RESPUESTA=' + xhr.responseText);
+// // Cuando se recibe la respuesta, procesa los datos
+// xhr.onload = function() {
+//   if (xhr.status == 200) {
+//     // Obtiene los datos de la respuesta
+//     //muestra los datos de respuesta 
+//    // console.log('RESPUESTA=' + xhr.responseText);
 
-    var datos = JSON.parse(xhr.responseText);
-    //console.log('DATOS EN FORMATO JSON: ' + datos);
-    // Crea un elemento modal
-    var modal = document.createElement("div");
-    modal.className = "modal";
-    console.log("Modal creado:", modal);
+//     var datos = JSON.parse(xhr.responseText);
+//     //console.log('DATOS EN FORMATO JSON: ' + datos);
+//     // Crea un elemento modal
+//     var modal = document.createElement("div");
+//     modal.className = "modal"; 
+//     console.log("Modal creado:", modal);
 
-    // Crea el contenido de la modal tag <p>
-    var p = document.createElement("p");
-    p.textContent = "Selecciona el tema al que vas agregar el test.";
-    modal.appendChild(p);
+//     // Crea el contenido de la modal tag <p>
+//     var p = document.createElement("p");
+//     p.textContent = "Selecciona el tema al que vas agregar el test.";
+//     modal.appendChild(p);
 
    
     
-    // Crea el contenido de la modal <select>
-    var select = document.createElement("select");
-    select.className = "select";
+//     // Crea el contenido de la modal <select>
+//     var select = document.createElement("select");
+//     select.className = "select";
     
 
     
 
-    //agregamos un salto de linea
-    var espacio= document.createElement("br");
-    modal.appendChild(espacio);
+//     //agregamos un salto de linea
+//     var espacio= document.createElement("br");
+//     modal.appendChild(espacio);
     
    
-    // Recorre la matriz de datos y crea opciones para el select
-    for (var i = 0; i < datos.length; i++) {
-      var opcion = document.createElement("option");
+//     // Recorre la matriz de datos y crea opciones para el select
+//     for (var i = 0; i < datos.length; i++) {
+//       var opcion = document.createElement("option");
    
     
-       // opcion.value = datos[i].nombre_tema;  
-        opcion.value = datos[i].id_tema;
-        opcion.text = datos[i].nombre_tema;
+//        // opcion.value = datos[i].nombre_tema;  
+//         opcion.value = datos[i].id_tema;
+//         opcion.text = datos[i].nombre_tema;
 
-        select.appendChild(opcion);
-               
-    }
-
-    // Agrega el select a la modal
-    modal.appendChild(select);
-
-    // Agrega la modal al documento
-    document.body.appendChild(modal);
-
-        // segundo bloque
-    var select = document.querySelector('.select');
-
-    // Añade un event listener al elemento select que envía el valor seleccionado a tu archivo PHP
-    select.addEventListener('change', function() {
-    valorSeleccionado = this.value;
-    
-    var titulo= document.querySelector('.tituloTest');
-    //titulo.appendChild(nombreTema);
-
-  // Find the object with the matching name property
-  for (let i = 0; i < datos.length; i++) {
-      if (datos[i].id_tema === valorSeleccionado) {
         
-        // Found the matching object, access the name property
-        var selectedName = datos[i].nombre_tema;
-         idSelec = datos[i].id_tema;
-        // Set the text content of the h2 element to the selected name
-        //titulo.textContent = selectedName;
-       console.log('nombre seleccionado: ' +selectedName + ' su id es: ' +idSelec);
-        titulo.innerHTML= 'Preguntas del test ' + selectedName;
-        obtenerPreguntaz(idSelec);
+//         select.appendChild(opcion);
+               
+//     }
+
+//     // Agrega el select a la modal
+//     modal.appendChild(select);
+
+//     // Agrega la modal al documento
+//     document.body.appendChild(modal);
+
+//         // segundo bloque
+//     var select = document.querySelector('.select');
+
+//     // Añade un event listener al elemento select que envía el valor seleccionado a tu archivo PHP
+//     select.addEventListener('change', function() {
+//     valorSeleccionado = this.value;
+    
+//     var titulo= document.querySelector('.tituloTest');
+//     //titulo.appendChild(nombreTema);
+
+//   // Find the object with the matching name property
+//   for (let i = 0; i < datos.length; i++) {
+//       if (datos[i].id_tema === valorSeleccionado) {
+        
+//         // Found the matching object, access the name property
+//         var selectedName = datos[i].nombre_tema;
+//          idSelec = datos[i].id_tema;
+//         // Set the text content of the h2 element to the selected name
+//         //titulo.textContent = selectedName;
+//        console.log('nombre seleccionado: ' +selectedName + ' su id es: ' +idSelec);
+//         titulo.innerHTML= 'Preguntas del test ' + selectedName;
+//         obtenerPreguntaz(idSelec);
         
        
-      }else{
-        //console.log("no esta dentro de la condicion");
-      }
-    }
+//       }else{
+//         //console.log("no esta dentro de la condicion");
+//       }
+//     }
     
      
-  // Envía el valor seleccionado a tu archivo PHP usando fetch()
-  fetch('probando2.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: 'valorSeleccionado=' + valorSeleccionado
+//   // Envía el valor seleccionado a tu archivo PHP usando fetch()
+//   fetch('probando2.php', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     body: 'valorSeleccionado=' + valorSeleccionado
    
-  })
-  .then(function(response) {
+//   })
+//   .then(function(response) {
     
-    return response.text();
-  })
-  .then(function(response) {
+//     return response.text();
+//   })
+//   .then(function(response) {
    
-      console.log(response);
-      modal.style.display = "none";
-      // Elimina el modal del documento
-      document.body.removeChild(modal);
+//       console.log(response);
+//       modal.style.display = "none";
+//       // Elimina el modal del documento
+//       document.body.removeChild(modal);
     
-  });
-  });
+//   });
+//   });
     
-  }
-  // Agrega un botón de cierre a la modal
-    var cerrarBtn = document.createElement("button");
-    cerrarBtn.textContent = "Cerrar";
-    cerrarBtn.className="btnCerrar",
-    cerrarBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-    // Elimina el modal del documento
-    document.body.removeChild(modal);
-    });
-    modal.appendChild(cerrarBtn);
-  }
+//   }
+//   // Agrega un botón de cierre a la modal
+//     var cerrarBtn = document.createElement("button");
+//     cerrarBtn.textContent = "Cerrar";
+//     cerrarBtn.className="btnCerrar",
+//     cerrarBtn.addEventListener("click", function() {
+//     modal.style.display = "none";
+//     // Elimina el modal del documento
+//     document.body.removeChild(modal);
+//     });
+//     modal.appendChild(cerrarBtn);
+//   }
 
+// }
+
+//crea un select tomando temas de BD, genera modal 
+function selecTemaTest(){
+  
+  // btnNuevoTest.disabled=true;
+  
+ 
+ 
+     // Crea una nueva instancia de XMLHttpRequest
+ var xhr = new XMLHttpRequest();
+ //console.log('objetoxhr creado'+xhr);
+ xhr.addEventListener("error", function() {
+     console.error("Error al hacer la solicitud");
+   });
+   
+ // Abre una conexión con el archivo PHP
+ xhr.open("GET", "probando.php", true);
+ 
+ 
+ 
+ // Cuando se recibe la respuesta, procesa los datos
+ xhr.onload = function() {
+   if (xhr.status == 200) {
+     // Obtiene los datos de la respuesta
+     //muestra los datos de respuesta 
+    // console.log('RESPUESTA=' + xhr.responseText);
+ 
+     let cursos = JSON.parse(xhr.responseText);
+     //console.log('DATOS EN FORMATO JSON: ' + datos);
+     // Crea un elemento modal
+    
+     // Recorre la matriz de datos y crea opciones para el select
+        
+      for(let datos of cursos) {
+
+       document.getElementById('listCursos').innerHTML+= `
+       <option class="kursosajx" value="${datos.id_tema}">${datos.nombre_tema}</option> `;
+    
+                     
+     }
+ 
+     
+     // Añade un event listener al elemento select que envía el valor seleccionado a tu archivo PHP
+     document.getElementById('listCursos').addEventListener('change', function() {
+      var selectElement = document.getElementById("listCursos");
+      var valorSeleccionado = selectElement.value;
+      console.log("El valor seleccionado es: " + valorSeleccionado);
+      
+         
+      
+   // Envía el valor seleccionado a tu archivo PHP usando fetch()
+   fetch('probando2.php', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/x-www-form-urlencoded'
+     },
+     body: 'valorSeleccionado=' + valorSeleccionado
+    
+   })
+   .then(function(response) {
+     
+     return response.text();
+   })
+   .then(function(response) {
+    
+       console.log(response);
+       obtenerPreguntaz(valorSeleccionado);
+      
+     
+   });
+   });
+     
+   }
+   
+     
+ }
+ // Envía la solicitud
+ xhr.send();
 }
 
 function crearPregunta(form){
@@ -406,7 +486,7 @@ function obtenerPreguntaz(idSelec){
                                                           </select>
                                                           <button class="actualizar" item="${datos.id_test_pregunta }">Actualizar</button>
                                                           <button class="quitar" item="${datos.id_test_pregunta }">Quitar</button>
-                                                        </td>`;
+                                                        </td> `;
       }
 
       //capturamos el noton de quitar para poder eliminar la pregunta cuando se haga clic

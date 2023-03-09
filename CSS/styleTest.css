@@ -111,12 +111,12 @@ background-color: rgb(44, 64, 128);
 .menuHijo1{
     display: flex;
     justify-content: flex-start;
-    
-    border: solid red 1px;
+/*     
+    border: solid red 1px; */
     
 }
 .menuHijo2{
-    border: solid red 1px;
+    /* border: solid red 1px; */
 }
 
 /* elementos de meni */
@@ -339,7 +339,7 @@ display: block;
 
 .question> label{
     font-size: 21px;
-}
+} 
 
 .question{
 margin: 20px 0;
@@ -352,13 +352,13 @@ margin: 20px 0;
 
 
 .modal{
-    position: sticky;
+      position: fixed;
     width: 600px;
     height: 400px;
-    margin-top: -650px;
+    margin-top: 650px;
     margin-left: 230px;
-    background-color: #0A3871;
-    /* border: solid black 2px; */
+    background-color: #0A3871; 
+    border: solid red 2px;
     
 }
 
@@ -373,8 +373,8 @@ margin: 20px 0;
 
 .select{
    
-    width: 300px;
-    margin-top: -310px;
+    /* width: 800px;
+    margin-top: 1110px; */
     
 }
 .contenedor_formulario__test {

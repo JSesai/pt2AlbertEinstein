@@ -1,7 +1,6 @@
 <?PHP
 //se inicia o se reanuda la sesion cualquiera de las 2 posibilidades
 session_start();
-
 // Si existe una variable de sesión 'LAST_ACTIVITY' y ha pasado más de 15 minutos desde la última actividad
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
     //redirige al archivo que destruye la sesion y rediracciona al login
@@ -16,6 +15,10 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
     $user = $_SESSION["IdUser"];
     //almacena el nombre del usuario
     $name = $_SESSION["usuario"];
+    $imgPerfil = $_SESSION["imgPerfil"];
+    $correo= $_SESSION["correo"];
+    // echo $imgPerfil;
+    
 }
 // Asigna el tiempo actual a la variable de sesión 'LAST_ACTIVITY'
 $_SESSION['LAST_ACTIVITY'] = time();
@@ -38,6 +41,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
 </head>
 
 <body class="background">
+
+
     <!-- barra de navegacion con bootstrap -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -46,7 +51,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
             </a>
             <ul class="navbar-nav ms-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php"><i class="bi bi-person-gear"> <?PHP echo $name ?>: </i> Administra tu Perfil</a>
+                    <a class="nav-link active" aria-current="page" href="index.php" id="idAdm" item="<?php echo $user ?> "><i class="bi bi-person-gear"> <?PHP echo $name ?>: </i> Administra tu Perfil</a>
                 </li>
             </ul>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation ">
@@ -75,8 +80,9 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../img/imgsysgerde/perfil.jpg" alt="FotoAdm" class="imgAdmin">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="perfilImg">
+                            <img src="../datosPerfiles/imageProfile/<?php echo $imgPerfil?>" alt="FotoAdm" class="img-profile" onerror="this.onerror=null; this.src='../img/imgsysgerde/perfil.jpg'">
+
 
                         </a>
                         <div class="menu-container">
@@ -95,113 +101,64 @@ $_SESSION['LAST_ACTIVITY'] = time();
             </div>
         </div>
     </nav>
-    <main class="container-fluid">
-        <section class="d-flex">
-            <article class="col-3">
+    
 
-            </article>
-
-            <article class="col-9 border border-danger">
-                <p class="">
-                <h3 class="text-center">Informacion Personal</h3>
-                </p>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Información básica</th>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Es posible que los directivos puedan ver parte de tu información al usar esta plataforma.</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-
-                        </tr>
-                        <tr class="align-middle">
-                            <th scope="row">Foto</th>
-                            <td>Personaliza tu perfil con una foto</td>
-                            
-                            <td colspan="2">
-                                <label for="imageInput">
-                                    <img src="" class="img-thumbnail rounded-circle img-profile" alt="Foto de perfil" style="max-width: 80px;" onerror="this.onerror=null; this.src='../img/imgsysgerde/perfil.jpg'">
-                                </label>
-                                <input type="file" id="imageInput" accept="image/*" onchange="uploadImage(event)" style="display:none;">
-
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Nombre</th>
-                            <td colspan="2">Julio Sesai</td>
-                            <?php include("modales.php") ?>
-                            <td colspan="2"><a href="#" data-bs-toggle="modal" data-bs-target="#modalPrueba"><i class="bi bi-chevron-right"></i></a></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Fecha de nacimiento</th>
-                            <td colspan="2">22/12/1989</td>
-                            <td colspan="2"><a href=""><i class="bi bi-chevron-right"></i></a></td>
-
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Genero</th>
-                            <td colspan="2">Hombre</td>
-                            <td colspan="2"><a href=""><i class="bi bi-chevron-right"></i></a></td>
-
-
-                        </tr>
-                    </tbody>
-                </table>
-                <form>
-
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label"></label>
-                        <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </article>
-
-
-        </section>
-    </main>
-
+    <!-- consulta codigo postal 
     <form id="formCp" action="">
         <input type="text" id="cp">
         <button type="submit">CP</button>
-    </form>
+    </form> -->
+
+    <div class="row vh-100">
+
+        <ul class="nav flex-column col-2 bg-dark border-top border-dark" id="mnuLateral">
+
+            <a href="#" class="text-end fs-3 p-2" id="btnEditAside"><i class="bi bi-arrow-left-circle-fill"></i></a>
+            
+            <li class="nav-item">
+                <!-- <a class="nav-link" id="enlace1" href="#"><h6>Información personal <i class="bi bi-person-bounding-box"></i></h6></a> -->
+                <a class="nav-link" href="#"><h6 id="enlace1">Información personal</h6></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><h6 id="enlace2">Información de domicilio</h6></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><h6 id="enlace3">Información de contacto</h6></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><h6 id="enlace4">Administra contraseña</h6></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><h6 id="enlace5">Prueba de modales y cp</h6></a>
+            </li>
+
+        </ul>
 
 
 
+        <!-- contenido de vh que vamos a mostrar -->
+        <div class="col-8 col-md-8 col-lg-9">
+            <div class="container-fluid" id="contenido">
+               
+                
+                <h1 class="text-center"></h1>
+            </div>
+        </div>
 
-
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script>
-        function uploadImage(event) {
-            const input = event.target;
-            const file = input.files[0];
-            const formData = new FormData();
-            formData.append("image", file);
-
-            // Aquí se puede llamar a una función para enviar la imagen al servidor
-            sendImageToServer(formData);
-        }
+      
     </script>
 
+    <script src="js/aside.js"></script>   
+    <script src="js/buscarCpostal.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    </scrip>
+</script> 
 
-    <script src="pruebaCp.js"></script>
+    
 </body>
 
 </html>

@@ -258,10 +258,24 @@ function validaLogAdmin($correo, $pasUsr){
 
         //guardamos el resultado en la varible registro
         $registro = $resultado->fetch(PDO::FETCH_ASSOC);
-
+        
         //validamos si existe el registro accediendo con la variable registro e indicando el nombre del campo tal cual esta en la base de datos
         if ($registro["correo"] == $correo && $registro["pass"] == $pasUsr) {
             //si el usuario y contraseña son correctos entra a este bloque 
+            
+          
+            $sql2 = 'SELECT foto_admin FROM datper_admin WHERE id_admon=:m_id_admon';
+        
+            //hacemos uso de la sentencia preparada de nuestro objeto de conexion y le pasamos la sentencia sql
+            $res = $bds->prepare($sql2);
+        
+            //ahora se ejecuta la sentencia, debemos sustituir los marcadores por las variables que contiene la informacion que el usuario ingreso
+            $res->execute(array(":m_id_admon"=>$registro["id_admon"]));
+            //guardamos el resultado en la varible registro
+            $reg = $res->fetch(PDO::FETCH_ASSOC);
+            $foto= $reg["foto_admin"];
+           // $res->closeCursor();
+
 
 
             //iniciamos una sesion para el usuario que se ha logeado para poder ingresar a las paginas destino
@@ -269,10 +283,12 @@ function validaLogAdmin($correo, $pasUsr){
 
             //almacenamos en la variable global SESSION el id del usuario con el que ha niciado sesion para poder hacer consultas posteriormente usando where
             $_SESSION["IdUser"] = $registro["id_admon"];
-
+            //almacenamos en la variable global SESSION el id del usuario con el que ha niciado sesion para poder hacer consultas posteriormente usando where
+            $_SESSION["correo"] = $registro["correo"];
             //almacenamos en la variable global $_SESION el nombre del usuario con ayuda de lo recuperado de la consulta.
             $_SESSION["usuario"] = $registro["nombre_adm"]." ".$registro["apePat_adm"];
-            $_SESION["rolUser"]= "Administrator";
+            $_SESSION["rolUser"]= "Administrator";
+            $_SESSION["imgPerfil"]=$foto;
 
             //redirigimos a la pagina de MEDICOS
             header("location:../user_adminV/index.php");

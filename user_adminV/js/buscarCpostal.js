@@ -1,10 +1,21 @@
 console.log('JS-Codigo Postal:->ok');
 
-let formulario= document.getElementById('formCp')
-formulario.onsubmit= e=>{
-    e.preventDefault( );
-    llamaCp();
-}
+
+
+  
+  
+
+// let modal= document.getElementById('modalprueba');
+// modal.addEventListener('shown.bs.modal',() => {
+//     console.log('cargado el evento del modal');
+//     // myInput.focus();
+//   });
+  
+
+// formulario.onsubmit= e=>{
+//     e.preventDefault( );
+//     llamaCp();
+// }
 
 function llamaCp(){
     
@@ -25,6 +36,7 @@ xhr.onload= function (){
        
     }else{
         console.log('errror en la respuesta');
+        
     }
     
 }

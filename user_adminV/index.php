@@ -75,7 +75,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../img/imgsysgerde/perfil.jpg" alt="FotoAdm" class="imgAdmin">
+                            <img src="../img/imgsysgerde/perfil.jpg" alt="FotoAdm" class="img-profile">
 
                         </a>
                         <div class="menu-container">
@@ -190,7 +190,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
             </div>
             <div class="card-footer">
 
-                <div class="administra"><a href=""><img src="../img/imgsysgerde/administrar.png" alt="Editar"></a></div>
+                <div class="administra"><a href="perfilAdmin.php"><img src="../img/imgsysgerde/administrar.png" alt="Editar"></a></div>
 
 
             </div>

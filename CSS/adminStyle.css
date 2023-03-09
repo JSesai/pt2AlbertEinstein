@@ -79,7 +79,7 @@ a:hover{
     /* imagen usuario */
     .imgAdmin{
         width: auto;
-        height: 1.5rem;
+        height: 70px;
         border-radius: 16px;
         
         border: solid rgb(5, 212, 5) 2px;
@@ -133,7 +133,10 @@ a:hover{
 
 
 /* ************************ My Styless ********************************* */
-
+.alto{
+    height: 50px;
+    margin-top: 13px;
+}
 
 .bg-third-color{
     background-color: var(--third-color);
@@ -363,10 +366,21 @@ a:hover{
     max-width: 80px;
     height: auto;
     cursor: pointer;
+    border-radius: 45px;
+
+    width: auto;
+    height: 1.5rem;
+    border-radius: 16px;
+    
+    border: solid rgb(5, 212, 5) 2px;
   }
   
 
 
+/* 
+.desborde{
+    margin-left: -155px;
+}   */
 
 /*  X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap */
